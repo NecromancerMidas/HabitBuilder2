@@ -4,11 +4,38 @@
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:local="clr-namespace:HabitBuilder2"
-    Shell.FlyoutBehavior="Disabled">
+    Shell.FlyoutBehavior="Flyout">
 
-    <ShellContent
-        Title="Home"
-        ContentTemplate="{DataTemplate local:MainPage}"
-        Route="MainPage" />
+    <Shell.FlyoutHeader>
+        <Label Text="Hamburger Menu" FontAttributes="Bold" FontSize="Large"/>
+    </Shell.FlyoutHeader>
 
+    <Shell.TitleView>
+        <Label Text="Temporary Title" FontAttributes="Bold" VerticalOptions="Center" TextColor="White"/>
+    </Shell.TitleView>
+
+    <!-- Hamburger Menu Items -->
+   
+    <FlyoutItem Title="Settings" IsVisible="false">
+        <ShellContent>
+            <ContentPage>
+                <Label Text="Yo"/>
+            </ContentPage></ShellContent>
+    </FlyoutItem>
+    <!-- Add more FlyoutItems here -->
+
+
+
+
+    <!-- TabBar for Persistent Bottom Tabs -->
+
+
+    <TabBar>
+        <Tab Title="Home">
+            <ShellContent ContentTemplate="{DataTemplate local:MainPage}" Route="MainPage" />
+        </Tab>
+        <Tab Title="Bomb">
+            <ShellContent ContentTemplate="{DataTemplate local:MainPage}" />
+        </Tab>
+    </TabBar>
 </Shell>

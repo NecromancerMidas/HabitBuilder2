@@ -8,12 +8,13 @@ namespace HabitBuilder2.TempDB.Habits
 {
     class Habit
     {
-        public Habit(List<Day> days)
+        public Habit(Guid id,Week week)
         {
-            Days = days;
+            Id = id;
+            Week = week;
         }
         public Guid Id { get; private set; }
-        public List<Day> Days { get; private set; }
+        public Week Week { get; private set; }
         public string Title { get; private set; }
         public string Description { get; private set; }
     }
