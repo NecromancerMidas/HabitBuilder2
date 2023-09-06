@@ -3,6 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:androidSpecific="clr-namespace:Microsoft.Maui.Controls.PlatformConfiguration.AndroidSpecific;assembly=Microsoft.Maui.Controls"
              xmlns:iOsSpecific="clr-namespace:Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;assembly=Microsoft.Maui.Controls"
+             xmlns:components="clr-namespace:HabitBuilder2.Views.MainPage.Components"
              x:Class="HabitBuilder2.MainPage">
 
     <ScrollView>
@@ -10,10 +11,7 @@
             Spacing="15"
             Padding="30,0" 
             VerticalOptions="Center">
-            
-            <Label Text="Hello Midas or something" 
-                   HorizontalOptions="Center"/>
-            <Label Text="Bruv very cool" HorizontalOptions="Center"/>
+            <components:MainPageHabitOverview/>
         </VerticalStackLayout>
     </ScrollView>
 
