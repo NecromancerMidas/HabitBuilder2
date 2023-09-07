@@ -65,6 +65,9 @@
 	  <MauiXaml Update="Views\MainPage\Components\MainPageHabitOverview.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
+	  <MauiXaml Update="Views\MainPage\Components\MainPageHabitOverviewComponents\HabitBar.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
 	</ItemGroup>
 
 </Project>

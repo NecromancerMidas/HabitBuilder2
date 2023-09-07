@@ -9,8 +9,9 @@
     <ScrollView>
         <VerticalStackLayout
             Spacing="15"
-            Padding="30,0" 
-            VerticalOptions="Center">
+            Padding="0,0" 
+            VerticalOptions="Start"
+            HorizontalOptions="Fill">
             <components:MainPageHabitOverview/>
         </VerticalStackLayout>
     </ScrollView>
