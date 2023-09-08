@@ -1,18 +1,28 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:androidSpecific="clr-namespace:Microsoft.Maui.Controls.PlatformConfiguration.AndroidSpecific;assembly=Microsoft.Maui.Controls"
-             xmlns:iOsSpecific="clr-namespace:Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;assembly=Microsoft.Maui.Controls"
-             xmlns:components="clr-namespace:HabitBuilder2.Views.MainPage.Components"
+             xmlns:carouselOne="clr-namespace:HabitBuilder2.Selectors.MainPage.CarouselOne"
+             xmlns:views="clr-namespace:HabitBuilder2.Views.MainPage"
              x:Class="HabitBuilder2.MainPage">
-
+<ContentPage.Resources>
+    <ResourceDictionary>
+        <DataTemplate x:Key="HabitOverviewTemplate">
+                <views:HabitOverviewView/>
+        </DataTemplate>
+        <carouselOne:CarouselOneTemplateSelector x:Key="HabitTemplateSelectorCarouselOne"
+                                                 HabitOverviewTemplate="{StaticResource HabitOverviewTemplate}"/>
+    </ResourceDictionary>
+</ContentPage.Resources>
     <ScrollView>
         <VerticalStackLayout
             Spacing="15"
             Padding="0,0" 
             VerticalOptions="Start"
             HorizontalOptions="Fill">
-            <components:MainPageHabitOverview/>
+            <CarouselView ItemsSource="{Binding CarouselOne}"
+                          ItemTemplate="{StaticResource HabitTemplateSelectorCarouselOne}"
+                          IndicatorView="CarouselOneIndicator"/>
+            <IndicatorView x:Name="CarouselOneIndicator" Margin="5"></IndicatorView>
         </VerticalStackLayout>
     </ScrollView>
 

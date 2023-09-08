@@ -53,19 +53,26 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <Folder Include="Models\" />
-	  <Folder Include="Selectors\" />
-	  <Folder Include="ViewModels\" />
+	  <Folder Include="ViewModels\NewFolder1\" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <Compile Update="Views\MainPage\HabitOverviewView.xaml.cs">
+	    <DependentUpon>HabitOverviewView.xaml</DependentUpon>
+	  </Compile>
+	  <Compile Update="Views\MainPage\Components\MainPageHabitOverviewComponents\HabitBarView.xaml.cs">
+	    <DependentUpon>HabitBarView.xaml</DependentUpon>
+	  </Compile>
 	</ItemGroup>
 
 	<ItemGroup>
 	  <MauiXaml Update="NewPage1.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="Views\MainPage\Components\MainPageHabitOverview.xaml">
+	  <MauiXaml Update="Views\MainPage\HabitOverviewView.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="Views\MainPage\Components\MainPageHabitOverviewComponents\HabitBar.xaml">
+	  <MauiXaml Update="Views\MainPage\Components\MainPageHabitOverviewComponents\HabitBarView.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	</ItemGroup>

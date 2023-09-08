@@ -2,12 +2,12 @@
 <ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:mainPageHabitOverviewComponents="using:HabitBuilder2.Views.MainPage.Components.MainPageHabitOverviewComponents"
-             x:Class="HabitBuilder2.Views.MainPage.Components.MainPageHabitOverview">
+             x:Class="HabitBuilder2.Views.MainPage.HabitOverviewView">
     <VerticalStackLayout BackgroundColor="AntiqueWhite" HorizontalOptions="Fill">
         <Label 
             Text="Welcome to .NET MAUI!"
             VerticalOptions="Center" 
             HorizontalOptions="Center" />
-        <mainPageHabitOverviewComponents:HabitBar HabitTitle="Habit A"/>
+        <mainPageHabitOverviewComponents:HabitBarView HabitTitle="Habit A"/>
     </VerticalStackLayout>
 </ContentView>
