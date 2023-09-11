@@ -3,36 +3,32 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:local="using:HabitBuilder2.Views.MainPage.Components.MainPageHabitOverviewComponents"
              x:Class="HabitBuilder2.Views.MainPage.Components.MainPageHabitOverviewComponents.HabitBarView">
+    
     <VerticalStackLayout>
-        <Label 
-            Text="{Binding HabitTitle, Source={RelativeSource AncestorType={x:Type local:HabitBarView}}}"
-            VerticalOptions="Center" 
-            HorizontalOptions="Start" Margin="20,0,0,0"/>
-        <Path Stroke="gray" StrokeThickness="1" HeightRequest="20">
-            <Path.Data>
-                <RectangleGeometry x:Name="BackgroundProgressBar" Rect="0,0,100,20"/>
-            </Path.Data>
-        </Path>
-        <RoundRectangle BackgroundColor="grey" HeightRequest="20" WidthRequest="100" HorizontalOptions="Start" Margin="20,0,0,0"/>
-        <Grid x:Name="HabitProgressBar" HeightRequest="20" WidthRequest="100" HorizontalOptions="Start" Margin="20,0,0,0">
-            <BoxView x:Name="ProgressBarBackground" Color="Gray" VerticalOptions="FillAndExpand" HorizontalOptions="Start" CornerRadius="20"/>
-            <BoxView x:Name="ProgressBarLoad" Color="Red" WidthRequest="10" HorizontalOptions="Start" CornerRadius="20"/>
-        </Grid>
+        <VerticalStackLayout.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="../../../../Resources/Styles/MainPage/Components/MainPageHabitOverviewComponents/HabitBar/BarGradient.xaml"></ResourceDictionary>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+        </VerticalStackLayout.Resources>
         <Grid>
-            <Border HeightRequest="40" BackgroundColor="green" WidthRequest="100" Margin="20,3,0,0" HorizontalOptions="Start" VerticalOptions="Start">
+            <Border HeightRequest="40" BackgroundColor="green" WidthRequest="154" Margin="18,3,0,0" HorizontalOptions="Start" VerticalOptions="Start">
                 <Border.StrokeShape>
                     <RoundRectangle CornerRadius="20"></RoundRectangle>
                 </Border.StrokeShape>
                 <Label Margin="13,0,0,0" HorizontalOptions="Start" VerticalOptions="Start" FontSize="10" Text="{Binding HabitTitle, Source={RelativeSource AncestorType={x:Type local:HabitBarView}}}"/>
             </Border>
-            <Border Stroke="blue" StrokeThickness="0" BackgroundColor="Gray" HeightRequest="30" WidthRequest="100" HorizontalOptions="Start" Margin="20,15,0,0" VerticalOptions="Center">
-            <Border.StrokeShape>
+            <Border Stroke="blue" StrokeThickness="0" Background="{StaticResource BarGradient}" HeightRequest="25" WidthRequest="150" HorizontalOptions="Start" Margin="20,15,0,0" VerticalOptions="Center">
+                <Border.Shadow>
+<Shadow Radius="0"/>
+                </Border.Shadow>
+                <Border.StrokeShape>
                 <RoundRectangle CornerRadius="20"/>
             </Border.StrokeShape>
-            <RoundRectangle x:Name="LabelRectangle" WidthRequest="20" BackgroundColor="red" CornerRadius="20" HorizontalOptions="Start"/>
+            <RoundRectangle x:Name="LabelRectangle" WidthRequest="20" Background="{StaticResource BarLoadGradient}" CornerRadius="20" HorizontalOptions="Start"/>
             </Border>
-
         </Grid>
-        <ProgressBar x:Name="Bar" HeightRequest="20" Progress="0.3" ProgressColor="Red" HorizontalOptions="Fill" WidthRequest="100"  Margin="20,0,0,0"/>
+        
     </VerticalStackLayout>
 </ContentView>

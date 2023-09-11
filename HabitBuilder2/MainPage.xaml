@@ -21,7 +21,8 @@
             HorizontalOptions="Fill">
             <CarouselView ItemsSource="{Binding CarouselOne}"
                           ItemTemplate="{StaticResource HabitTemplateSelectorCarouselOne}"
-                          IndicatorView="CarouselOneIndicator"/>
+                          IndicatorView="CarouselOneIndicator"
+                          HeightRequest="200"/>
             <IndicatorView x:Name="CarouselOneIndicator" Margin="5"></IndicatorView>
         </VerticalStackLayout>
     </ScrollView>
