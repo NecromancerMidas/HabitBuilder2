@@ -13,20 +13,21 @@
         </ResourceDictionary>
         </VerticalStackLayout.Resources>
         <Grid>
-            <Border HeightRequest="40" BackgroundColor="green" WidthRequest="154" Margin="18,3,0,0" HorizontalOptions="Start" VerticalOptions="Start">
+            <Border HeightRequest="37" StrokeThickness="0" BackgroundColor="green" WidthRequest="154" Margin="18,3,0,0" HorizontalOptions="Start" VerticalOptions="Start">
                 <Border.StrokeShape>
                     <RoundRectangle CornerRadius="20"></RoundRectangle>
                 </Border.StrokeShape>
+                <Border.Shadow>
+                    <Shadow Radius="30" Offset="-15,3"/>
+                </Border.Shadow>
                 <Label Margin="13,0,0,0" HorizontalOptions="Start" VerticalOptions="Start" FontSize="10" Text="{Binding HabitTitle, Source={RelativeSource AncestorType={x:Type local:HabitBarView}}}"/>
             </Border>
             <Border Stroke="blue" StrokeThickness="0" Background="{StaticResource BarGradient}" HeightRequest="25" WidthRequest="150" HorizontalOptions="Start" Margin="20,15,0,0" VerticalOptions="Center">
-                <Border.Shadow>
-<Shadow Radius="0"/>
-                </Border.Shadow>
+
                 <Border.StrokeShape>
                 <RoundRectangle CornerRadius="20"/>
             </Border.StrokeShape>
-            <RoundRectangle x:Name="LabelRectangle" WidthRequest="20" Background="{StaticResource BarLoadGradient}" CornerRadius="20" HorizontalOptions="Start"/>
+                <RoundRectangle x:Name="LabelRectangle" WidthRequest="20" Background="{StaticResource BarLoadGradient}" CornerRadius="20" HorizontalOptions="Start"/>
             </Border>
         </Grid>
         

@@ -6,7 +6,7 @@
     </LinearGradientBrush>
 
     <LinearGradientBrush x:Key="BarLoadGradient" EndPoint="0,1">
-        <GradientStop Color="#660000" Offset="0.1"/>
-        <GradientStop Color="red" Offset="0.3"/>
+        <GradientStop Color="#F50E0E" Offset="0.1"/>
+        <GradientStop Color="#950101" Offset="0.3"/>
     </LinearGradientBrush>
 </ResourceDictionary>
