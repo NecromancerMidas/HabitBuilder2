@@ -1,13 +1,16 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:mainPageHabitOverviewComponents="using:HabitBuilder2.Views.MainPage.Components.MainPageHabitOverviewComponents"
+             xmlns:mainPageHabitOverviewComponents="clr-namespace:HabitBuilder2.Views.MainPage.Components.MainPageHabitOverviewComponents"
              x:Class="HabitBuilder2.Views.MainPage.HabitOverviewView">
     <VerticalStackLayout BackgroundColor="AntiqueWhite" HorizontalOptions="Fill" HeightRequest="200">
         <Label 
             Text="Welcome to .NET MAUI!"
             VerticalOptions="Center" 
             HorizontalOptions="Center" />
-        <mainPageHabitOverviewComponents:HabitBarView HabitTitle="Habit A"/>
+        <mainPageHabitOverviewComponents:HabitBarView HabitTitle="Habit A" HabitLevel="1" HabitStreak="1"/>
+        <mainPageHabitOverviewComponents:HabitBarView HabitTitle="Habit B" HabitLevel="1" HabitStreak="8"/>
+        <mainPageHabitOverviewComponents:HabitBarView HabitTitle="Habit C" HabitLevel="5" HabitStreak="5"/>
+        <mainPageHabitOverviewComponents:HabitBarView HabitTitle="Habit D" HabitLevel="10" HabitStreak="20"/>
     </VerticalStackLayout>
 </ContentView>

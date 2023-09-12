@@ -2,6 +2,7 @@
 <ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:local="using:HabitBuilder2.Views.MainPage.Components.MainPageHabitOverviewComponents"
+             xmlns:local2="clr-namespace:HabitBuilder2.Utilities.HabitBar.Converter"
              x:Class="HabitBuilder2.Views.MainPage.Components.MainPageHabitOverviewComponents.HabitBarView">
     
     <VerticalStackLayout>
@@ -9,25 +10,52 @@
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="../../../../Resources/Styles/MainPage/Components/MainPageHabitOverviewComponents/HabitBar/BarGradient.xaml"></ResourceDictionary>
+                    <ResourceDictionary>
+                        <local2:HabitBarWidthConverter x:Key="BarWidthConverter"/>
+                    </ResourceDictionary>
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
         </VerticalStackLayout.Resources>
         <Grid>
-            <Border HeightRequest="37" StrokeThickness="0" BackgroundColor="green" WidthRequest="154" Margin="18,3,0,0" HorizontalOptions="Start" VerticalOptions="Start">
+            <Border HeightRequest="37" 
+                    StrokeThickness="0" 
+                    BackgroundColor="green" 
+                    WidthRequest="154"
+                    Margin="18,3,0,0" 
+                    HorizontalOptions="Start" 
+                    VerticalOptions="Start">
                 <Border.StrokeShape>
                     <RoundRectangle CornerRadius="20"></RoundRectangle>
                 </Border.StrokeShape>
                 <Border.Shadow>
                     <Shadow Radius="30" Offset="-15,3"/>
                 </Border.Shadow>
-                <Label Margin="13,0,0,0" HorizontalOptions="Start" VerticalOptions="Start" FontSize="10" Text="{Binding HabitTitle, Source={RelativeSource AncestorType={x:Type local:HabitBarView}}}"/>
+                <Label
+                    Margin="13,0,0,0" 
+                    HorizontalOptions="Start" 
+                    VerticalOptions="Start" 
+                    FontSize="10" 
+                    Text="{Binding HabitTitle, Source={RelativeSource AncestorType={x:Type local:HabitBarView}}}"/>
             </Border>
-            <Border Stroke="blue" StrokeThickness="0" Background="{StaticResource BarGradient}" HeightRequest="25" WidthRequest="150" HorizontalOptions="Start" Margin="20,15,0,0" VerticalOptions="Center">
+            <Border 
+                Stroke="blue" 
+                StrokeThickness="0" 
+                Background="{StaticResource BarGradient}" 
+                HeightRequest="25"
+                WidthRequest="150" 
+                HorizontalOptions="Start"
+                Margin="20,15,0,0" 
+                VerticalOptions="Center">
 
                 <Border.StrokeShape>
-                <RoundRectangle CornerRadius="20"/>
-            </Border.StrokeShape>
-                <RoundRectangle x:Name="LabelRectangle" WidthRequest="20" Background="{StaticResource BarLoadGradient}" CornerRadius="20" HorizontalOptions="Start"/>
+                    <RoundRectangle x:Name="BarRectangle" WidthRequest="20" CornerRadius="20" HorizontalOptions="Start"/>
+                </Border.StrokeShape>
+                <Grid>
+                    <RoundRectangle x:Name="LoadingRectangle" WidthRequest="{Binding HabitStreak,Converter={StaticResource BarWidthConverter},FallbackValue=20,x:DataType='local:HabitBarView'}" Background="{StaticResource BarLoadGradient}" CornerRadius="20" HorizontalOptions="Start"
+                                    x:DataType="local:HabitBarView" />
+                    <Label Text="{Binding HabitLevel,StringFormat='Lvl.{0}'}" TextColor="Black" VerticalOptions="Center" Margin="8,0,0,0"></Label>
+                    <Label Text="{Binding HabitStreak,StringFormat='{0}/21'}" TextColor="Black" HorizontalOptions="End" VerticalOptions="Center" Margin="0,0,8,0"></Label>
+                </Grid>
             </Border>
         </Grid>
         
