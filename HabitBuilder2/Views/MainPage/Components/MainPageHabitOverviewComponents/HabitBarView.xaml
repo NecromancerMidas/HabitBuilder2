@@ -51,8 +51,8 @@
                     <RoundRectangle x:Name="BarRectangle" WidthRequest="20" CornerRadius="20" HorizontalOptions="Start"/>
                 </Border.StrokeShape>
                 <Grid>
-                    <RoundRectangle x:Name="LoadingRectangle" WidthRequest="{Binding HabitStreak,Converter={StaticResource BarWidthConverter},FallbackValue=20,x:DataType='local:HabitBarView'}" Background="{StaticResource BarLoadGradient}" CornerRadius="20" HorizontalOptions="Start"
-                                    x:DataType="local:HabitBarView" />
+                    <RoundRectangle x:Name="LoadingRectangle" Background="{StaticResource BarLoadGradient}" CornerRadius="20" HorizontalOptions="Start"
+                                    x:DataType="local:HabitBarView"/>
                     <Label Text="{Binding HabitLevel,StringFormat='Lvl.{0}'}" TextColor="Black" VerticalOptions="Center" Margin="8,0,0,0"></Label>
                     <Label Text="{Binding HabitStreak,StringFormat='{0}/21'}" TextColor="Black" HorizontalOptions="End" VerticalOptions="Center" Margin="0,0,8,0"></Label>
                 </Grid>
