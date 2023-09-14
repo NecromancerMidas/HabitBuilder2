@@ -16,7 +16,7 @@ namespace HabitBuilder2.Utilities.HabitBar.Converter
             {
                 
                 /*return (progress / 21 ) * 20;*/
-                return progress;
+                return (double)progress;
             }
             if (value is string strValue && int.TryParse(strValue, out int result))
             {

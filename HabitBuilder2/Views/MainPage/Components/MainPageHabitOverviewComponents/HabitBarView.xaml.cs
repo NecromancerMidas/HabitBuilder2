@@ -1,47 +1,70 @@
 using System.Globalization;
 using Microsoft.Maui.Controls.Shapes;
 using HabitBuilder2.Utilities.HabitBar.Converter;
+using System.ComponentModel;
+
 namespace HabitBuilder2.Views.MainPage.Components.MainPageHabitOverviewComponents;
 
 public partial class HabitBarView : ContentView
 {
-    public static readonly BindableProperty HabitTitleProp = BindableProperty.Create(
+    /*public static readonly BindableProperty HabitTitleProp = BindableProperty.Create(
         nameof(HabitTitle), typeof(string), typeof(HabitBarView), default(string));
     public static readonly BindableProperty HabitLevelProp = BindableProperty.Create(
-        nameof(HabitLevel), typeof(string), typeof(HabitBarView), default(string));
+        nameof(HabitLevel), typeof(int), typeof(HabitBarView), default(int));
     public static readonly BindableProperty HabitStreakProp = BindableProperty.Create(
-        nameof(HabitStreak), typeof(string), typeof(HabitBarView), default(string));
-
+        nameof(HabitStreak), typeof(int), typeof(HabitBarView), default(int));
+*/
+    private int _habitStreak;
     private readonly HabitBarWidthConverter _converter = new();
     public HabitBarView()
 	{
-    
-    InitializeComponent();
-    BindingContext = this;
-    UpdateLoadingBarWidth();
+        InitializeComponent();
+        UpdateLoadingBarWidth();
     }
+    protected override void OnParentSet()
+    {
+        base.OnParentSet();
+        var parentView = this.Parent as HabitOverviewHabitView;
+        if (parentView != null)
+        {
+            // Now you can access properties from the parent
+            _habitStreak = parentView.HabitStreak;
+            System.Diagnostics.Debug.WriteLine( "parent has loaded and habitstreak is: {_habitStreak}");
+        }
+    }
+    protected override void OnBindingContextChanged()
+    {
+        base.OnBindingContextChanged();
+        var parentContext = this.BindingContext as HabitOverviewHabitView;
 
-    public string HabitTitle
+        if (parentContext != null)
+        {
+            _habitStreak = parentContext.HabitStreak;
+            System.Diagnostics.Debug.WriteLine($"_habitStreak in HabitBarView set to: {_habitStreak}");
+            UpdateLoadingBarWidth();
+        }
+    }
+    /*public string HabitTitle
     {
         get => (string)GetValue(HabitTitleProp);
         set => SetValue(HabitTitleProp,value);
     }
 
-    public string HabitLevel
+    public int HabitLevel
     {
-        get => (string)GetValue(HabitLevelProp);
+        get => (int)GetValue(HabitLevelProp);
         set => SetValue(HabitLevelProp, value);
-    }
-    public string HabitStreak
+    }*/
+   /* public int HabitStreak
     {
-        get => (string)GetValue(HabitStreakProp);
+        get => (int)GetValue(HabitStreakProp);
         set
         {
             SetValue(HabitStreakProp, value);
             UpdateLoadingBarWidth();
             System.Diagnostics.Debug.WriteLine("HabitStreak set: " + value);
         }
-    }
+    }*/
     public void AnimateWidth(RoundRectangle loadingBar, double startWidth, double endWidth, uint duration)
     {
         loadingBar.Animate("WidthAnimation", d => loadingBar.WidthRequest = d, startWidth, endWidth, length: duration);
@@ -49,7 +72,7 @@ public partial class HabitBarView : ContentView
 
     public void UpdateLoadingBarWidth()
     {
-        var converterValue = _converter.Convert(HabitStreak, typeof(double), null, CultureInfo.CurrentCulture);
+        var converterValue = _converter.Convert(_habitStreak, typeof(double), null, CultureInfo.CurrentCulture);
         if (converterValue is double value)
         {
            var width = (150 / 21) * value;

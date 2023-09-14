@@ -72,6 +72,12 @@
 	  <MauiXaml Update="Resources\Styles\MainPage\Components\MainPageHabitOverviewComponents\HabitBar\BarGradient.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
+	  <MauiXaml Update="Views\MainPage\Components\MainPageHabitOverviewComponents\HabitOverviewHabitView.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\MainPage\Components\MainPageHabitOverviewComponents\StreakIndicator.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
 	  <MauiXaml Update="Views\MainPage\HabitOverviewView.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>

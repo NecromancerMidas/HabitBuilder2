@@ -35,7 +35,7 @@
                     HorizontalOptions="Start" 
                     VerticalOptions="Start" 
                     FontSize="10" 
-                    Text="{Binding HabitTitle, Source={RelativeSource AncestorType={x:Type local:HabitBarView}}}"/>
+                    Text="{Binding HabitTitle}"/>
             </Border>
             <Border 
                 Stroke="blue" 

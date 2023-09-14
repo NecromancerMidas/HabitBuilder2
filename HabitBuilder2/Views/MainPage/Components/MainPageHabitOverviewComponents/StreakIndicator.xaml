@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:mainPageHabitOverviewComponents="clr-namespace:HabitBuilder2.Views.MainPage.Components.MainPageHabitOverviewComponents"
+             x:Class="HabitBuilder2.Views.MainPage.Components.MainPageHabitOverviewComponents.StreakIndicator">
+    
+    <VerticalStackLayout Margin="10,0,0,0">
+       <Grid>
+        <Label FontSize="15"
+               TextColor="White"
+               Text="{Binding HabitTotal}"
+               Margin="0,20,0,0"
+               HorizontalOptions="Center"
+               VerticalOptions="Center"
+               ZIndex="1"/>
+        <Image Source="streak_fire.png" HeightRequest="40" ZIndex="0"/>
+       </Grid>
+
+</VerticalStackLayout>
+</ContentView>
