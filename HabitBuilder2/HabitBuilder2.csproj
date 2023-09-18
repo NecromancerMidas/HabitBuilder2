@@ -53,6 +53,7 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <Folder Include="TempDB\Habits\" />
 	  <Folder Include="ViewModels\NewFolder1\" />
 	</ItemGroup>
 

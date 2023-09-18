@@ -2,6 +2,7 @@ using System.Globalization;
 using Microsoft.Maui.Controls.Shapes;
 using HabitBuilder2.Utilities.HabitBar.Converter;
 using System.ComponentModel;
+using HabitBuilder2.TempDB.Habits;
 
 namespace HabitBuilder2.Views.MainPage.Components.MainPageHabitOverviewComponents;
 
@@ -14,35 +15,15 @@ public partial class HabitBarView : ContentView
     public static readonly BindableProperty HabitStreakProp = BindableProperty.Create(
         nameof(HabitStreak), typeof(int), typeof(HabitBarView), default(int));
 */
-    private int _habitStreak;
+
+    
+    private int _habitStreak = 5;
     private readonly HabitBarWidthConverter _converter = new();
+
     public HabitBarView()
-	{
+    {
         InitializeComponent();
         UpdateLoadingBarWidth();
-    }
-    protected override void OnParentSet()
-    {
-        base.OnParentSet();
-        var parentView = this.Parent as HabitOverviewHabitView;
-        if (parentView != null)
-        {
-            // Now you can access properties from the parent
-            _habitStreak = parentView.HabitStreak;
-            System.Diagnostics.Debug.WriteLine( "parent has loaded and habitstreak is: {_habitStreak}");
-        }
-    }
-    protected override void OnBindingContextChanged()
-    {
-        base.OnBindingContextChanged();
-        var parentContext = this.BindingContext as HabitOverviewHabitView;
-
-        if (parentContext != null)
-        {
-            _habitStreak = parentContext.HabitStreak;
-            System.Diagnostics.Debug.WriteLine($"_habitStreak in HabitBarView set to: {_habitStreak}");
-            UpdateLoadingBarWidth();
-        }
     }
     /*public string HabitTitle
     {
@@ -72,7 +53,9 @@ public partial class HabitBarView : ContentView
 
     public void UpdateLoadingBarWidth()
     {
-        var converterValue = _converter.Convert(_habitStreak, typeof(double), null, CultureInfo.CurrentCulture);
+       /*var parentStreak = Parent as HabitOverviewHabitView;
+       if (parentStreak != null) _habitStreak = parentStreak.HabitStreak;*/
+       var converterValue = _converter.Convert(_habitStreak, typeof(double), null, CultureInfo.CurrentCulture);
         if (converterValue is double value)
         {
            var width = (150 / 21) * value;

@@ -1,8 +1,10 @@
+using HabitBuilder2.ViewModels.MainPage.CarouselOne;
+
 namespace HabitBuilder2.Views.MainPage.Components.MainPageHabitOverviewComponents;
 
 public partial class HabitOverviewHabitView : ContentView
 {
-
+ /*   public bool DataReady;
     public static readonly BindableProperty HabitTitleProp = BindableProperty.Create(
         nameof(HabitTitle), typeof(string), typeof(HabitOverviewHabitView), default(string));
     public static readonly BindableProperty HabitLevelProp = BindableProperty.Create(
@@ -10,17 +12,16 @@ public partial class HabitOverviewHabitView : ContentView
     public static readonly BindableProperty HabitTotalProp = BindableProperty.Create(
         nameof(HabitTotal), typeof(int), typeof(HabitOverviewHabitView), default(int));
     public static readonly BindableProperty HabitStreakProp = BindableProperty.Create(
-        nameof(HabitStreak), typeof(int), typeof(HabitOverviewHabitView), default(int));
+        nameof(HabitStreak), typeof(int), typeof(HabitOverviewHabitView), default(int));*/
 
 
     public HabitOverviewHabitView()
 	{
-        BindingContext = this;
+        BindingContext = new HabitOverviewHabitViewViewModel();
         InitializeComponent();
-        
     }
 
-    public string HabitTitle
+    /*public string HabitTitle
     {
         get => (string)GetValue(HabitTitleProp);
         set => SetValue(HabitTitleProp, value);
@@ -47,5 +48,5 @@ public partial class HabitOverviewHabitView : ContentView
             System.Diagnostics.Debug.WriteLine($"HabitStreak in HabitOverviewHabitView set to: {HabitStreak}");
         }
 
-    }
+    }*/
 }
