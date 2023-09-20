@@ -2,7 +2,7 @@ using System.Globalization;
 using Microsoft.Maui.Controls.Shapes;
 using HabitBuilder2.Utilities.HabitBar.Converter;
 using System.ComponentModel;
-using HabitBuilder2.TempDB.Habits;
+
 
 namespace HabitBuilder2.Views.MainPage.Components.MainPageHabitOverviewComponents;
 

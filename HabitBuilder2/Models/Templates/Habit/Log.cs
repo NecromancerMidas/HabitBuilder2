@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace HabitBuilder2.Models.Templates.Habit.Week.Day
+namespace HabitBuilder2.Models.Templates.Habit
 {
     public class Log
     {
@@ -12,5 +12,6 @@ namespace HabitBuilder2.Models.Templates.Habit.Week.Day
         public string Accomplish { get; set; }
         public string Challenges { get; set; }
         public string Thoughts { get; set; }
+        public DateTime EntryDate { get; set; }
     }
 }

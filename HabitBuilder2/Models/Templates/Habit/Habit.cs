@@ -1,14 +1,27 @@
 ﻿namespace HabitBuilder2.Models.Templates.Habit;
-
+public enum HabitStatus
+{
+    NotStarted,
+    InProgress,
+    Frozen,
+    Completed,
+    Paused,
+}
 public class Habit
 {
-    public string Title;
-    public string Description;
-    public Guid Guid;
-    public int Xp;
-    public int Level;
-    public string Status;
-    public bool Frozen;
-    public bool Completed;
+    public HabitStatus Status { get; set; }
+    public string Title { get; set; }
+    public string Description { get; set; }
+    public Guid Guid { get; set; }
+    public int ExperiencePoints { get; set; }
+    public int Level { get; set; }
+    public Week WeekDays { get; set; }
+    public DateTime CreatedAt { get; set; }
+    public DateTime? UpdatedAt { get; set; } // Nullable, in case it hasn't been updated yet
+    public DateTime? DeletedAt { get; set; } // Uncomment if you're using soft deletes
 
+    public Habit()
+    {
+        CreatedAt = DateTime.Now;
+    }
 }
