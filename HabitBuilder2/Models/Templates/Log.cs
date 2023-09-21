@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace HabitBuilder2.Models.Templates.Habit
+namespace HabitBuilder2.Models.Templates
 {
     public class Log
     {
@@ -13,5 +13,7 @@ namespace HabitBuilder2.Models.Templates.Habit
         public string Challenges { get; set; }
         public string Thoughts { get; set; }
         public DateTime EntryDate { get; set; }
+
     }
+    
 }

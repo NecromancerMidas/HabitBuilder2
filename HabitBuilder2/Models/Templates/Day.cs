@@ -3,8 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using HabitBuilder2.Models.Templates;
 
-namespace HabitBuilder2.Models.Templates.Habit
+namespace HabitBuilder2.Models.Templates
 {
     public class Day
     {
@@ -18,7 +19,7 @@ namespace HabitBuilder2.Models.Templates.Habit
         public Log Log { get; set; }
 
 
-       
+
         // Any other properties that you wish to represent for a day
     }
 }

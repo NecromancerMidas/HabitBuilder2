@@ -1,4 +1,9 @@
-﻿namespace HabitBuilder2.Models.Templates.Habit;
+﻿using HabitBuilder2;
+using HabitBuilder2.Models;
+using HabitBuilder2.Models.Templates;
+
+
+namespace HabitBuilder2.Models.Templates;
 public enum HabitStatus
 {
     NotStarted,

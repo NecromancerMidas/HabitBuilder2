@@ -4,12 +4,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace HabitBuilder2.Models.Templates.Habit
+namespace HabitBuilder2.Models.Templates
 {
     public class Week
     {
-        
-        public List<Day> Days { get; set; } = new ();
+
+        public List<Day> Days { get; set; } = new();
 
         public Week(/*DateTime startDate*/)
         {
@@ -19,6 +19,6 @@ namespace HabitBuilder2.Models.Templates.Habit
                 var startDate = DateTime.Now;
                 Days.Add(new Day { Date = startDate.AddDays(i) });
             }
-        }     
+        }
     }
 }

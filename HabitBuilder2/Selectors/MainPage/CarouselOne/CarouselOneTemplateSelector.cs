@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using HabitBuilder2.Models.MainPage.CarouselOne;
 
 namespace HabitBuilder2.Selectors.MainPage.CarouselOne
 {
@@ -17,8 +16,6 @@ namespace HabitBuilder2.Selectors.MainPage.CarouselOne
         {
             switch (item)
             {
-                case HabitOverview:
-                    return HabitOverviewTemplate;
                 default:
                     return null;
             }

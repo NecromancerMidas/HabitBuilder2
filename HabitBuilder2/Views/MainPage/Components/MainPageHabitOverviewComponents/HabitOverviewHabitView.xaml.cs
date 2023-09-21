@@ -1,4 +1,4 @@
-using HabitBuilder2.ViewModels.MainPage.CarouselOne;
+
 
 namespace HabitBuilder2.Views.MainPage.Components.MainPageHabitOverviewComponents;
 
@@ -17,7 +17,6 @@ public partial class HabitOverviewHabitView : ContentView
 
     public HabitOverviewHabitView()
 	{
-        BindingContext = new HabitOverviewHabitViewViewModel();
         InitializeComponent();
     }
 
