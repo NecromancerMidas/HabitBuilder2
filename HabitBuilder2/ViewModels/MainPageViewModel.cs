@@ -1,12 +1,57 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.ComponentModel;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
+using HabitBuilder2.Models;
+using HabitBuilder2.Services;
+using HabitBuilder2.ViewModels.Templates;
 
 namespace HabitBuilder2.ViewModels
 {
-    internal class MainPageViewModel
+    public class MainPageViewModel : INotifyPropertyChanged
     {
+        private ObservableCollection<TemplateViewModel> _templates;
+
+
+        
+
+        public MainPageViewModel(MainPageModel mainpage)
+        {
+            Templates =
+                new ObservableCollection<TemplateViewModel>(mainpage.Templates.Select(t => new TemplateViewModel(t)));
+        }
+
+        public ObservableCollection<TemplateViewModel> Templates
+        {
+            get => _templates;
+            set
+            {
+                _templates = value;
+                OnPropertyChanged();
+            }
+        }
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        }
+
+        protected bool SetField<T>(ref T field, T value, [CallerMemberName] string propertyName = null)
+        {
+            if (EqualityComparer<T>.Default.Equals(field, value)) return false;
+            field = value;
+            OnPropertyChanged(propertyName);
+            return true;
+        }
     }
+
+    
+
+
+
 }

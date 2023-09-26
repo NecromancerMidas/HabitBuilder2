@@ -14,11 +14,14 @@ public class LogViewModel : INotifyPropertyChanged
 
     public LogViewModel(Log dayLog)
     {
-        _stateOfMind = dayLog.StateOfMind;
-        _accomplish = dayLog.Accomplish;
-        _challenges = dayLog.Challenges;
-        _thoughts = dayLog.Thoughts;
-        _entryDate = dayLog.EntryDate;
+        if (dayLog != null)
+        {
+            _stateOfMind = dayLog.StateOfMind;
+            _accomplish = dayLog.Accomplish;
+            _challenges = dayLog.Challenges;
+            _thoughts = dayLog.Thoughts;
+            _entryDate = dayLog.EntryDate;
+        }
     }
 
     public string StateOfMind

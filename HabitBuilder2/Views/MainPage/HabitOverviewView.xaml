@@ -8,9 +8,9 @@
             Text="Welcome to .NET MAUI!"
             VerticalOptions="Center" 
             HorizontalOptions="Center" />
-        <mainPageHabitOverviewComponents:HabitOverviewHabitView HabitTitle="Habit A" HabitTotal="1" HabitLevel="1" HabitStreak="1"/>
-        <mainPageHabitOverviewComponents:HabitOverviewHabitView HabitTitle="Habit B" HabitTotal="10" HabitLevel="1" HabitStreak="8"/>
-        <mainPageHabitOverviewComponents:HabitOverviewHabitView HabitTitle="Habit C" HabitTotal="15" HabitLevel="5" HabitStreak="5"/>
-        <mainPageHabitOverviewComponents:HabitOverviewHabitView HabitTitle="Habit D" HabitTotal="20" HabitLevel="10" HabitStreak="20"/>
+        <mainPageHabitOverviewComponents:HabitOverviewHabitView/>
+        <mainPageHabitOverviewComponents:HabitOverviewHabitView/>
+        <mainPageHabitOverviewComponents:HabitOverviewHabitView/>
+        <mainPageHabitOverviewComponents:HabitOverviewHabitView/>
     </VerticalStackLayout>
 </ContentView>

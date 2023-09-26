@@ -19,8 +19,8 @@
             Padding="0,0" 
             VerticalOptions="Start"
             HorizontalOptions="Fill">
-            <CarouselView ItemsSource="{Binding CarouselOne}"
-                          ItemTemplate="{StaticResource HabitTemplateSelectorCarouselOne}"
+            <CarouselView ItemsSource="{Binding Templates }"
+                          ItemTemplate="{StaticResource HabitOverviewTemplate}"
                           IndicatorView="CarouselOneIndicator"
                           HeightRequest="200"/>
             <IndicatorView x:Name="CarouselOneIndicator" Margin="5"></IndicatorView>
