@@ -20,21 +20,36 @@ namespace HabitBuilder2.TempDB
             {
                 Title = "Read a book",
                 Description = "Read for 30 minutes.",
-                WeekDays = new Week() // This will initialize 7 days
+                WeekDays = new Week(), // This will initialize 7 days
+                CreatedAt = DateTime.Now,
+                DeletedAt = null,
+                ExperiencePoints = 20,
+                Guid = new Guid(),
+                Level = 4,
+                Status = HabitStatus.InProgress,
+                UpdatedAt = null,
             };
 
             var habit2 = new Habit
             {
                 Title = "Exercise",
                 Description = "Go for a jog.",
-                WeekDays = new Week() // This will initialize 7 days
+                WeekDays = new Week(), // This will initialize 7 days
+                CreatedAt = DateTime.Now,
+                DeletedAt = null,
+                ExperiencePoints = 20,
+                Guid = new Guid(),
+                Level = 4,
+                Status = HabitStatus.InProgress,
+                UpdatedAt = null,
             };
 
             var template = new Template
             {
                 Title = "Daily Habits",
                 Description = "My daily routines",
-                HabitList = new List<Habit> { habit1, habit2 }
+                HabitList = new List<Habit> { habit1, habit2 },
+                Id = new Guid()
             };
 
             Templates.Add(template);

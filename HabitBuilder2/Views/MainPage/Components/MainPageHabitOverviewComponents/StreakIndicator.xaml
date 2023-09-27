@@ -8,7 +8,7 @@
        <Grid>
         <Label FontSize="15"
                TextColor="White"
-               Text="{Binding HabitTotal}"
+               Text="{Binding ExperiencePoints}"
                Margin="0,20,0,0"
                HorizontalOptions="Center"
                VerticalOptions="Center"

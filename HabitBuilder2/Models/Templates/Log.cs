@@ -12,7 +12,7 @@ namespace HabitBuilder2.Models.Templates
         public string Accomplish { get; set; }
         public string Challenges { get; set; }
         public string Thoughts { get; set; }
-        public DateTime EntryDate { get; set; }
+        public DateTime? EntryDate { get; set; }
 
     }
     

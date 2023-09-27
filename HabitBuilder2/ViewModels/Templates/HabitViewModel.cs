@@ -19,7 +19,7 @@ namespace HabitBuilder2.ViewModels.Templates
         private int _experiencePoints;
         private int _level;
         private WeekViewModel _weekDays;
-        private DateTime _createdAt;
+        private DateTime? _createdAt;
         private DateTime? _updatedAt;
         private DateTime? _deletedAt;
 
@@ -100,7 +100,7 @@ namespace HabitBuilder2.ViewModels.Templates
             }
         }
 
-        public DateTime CreatedAt
+        public DateTime? CreatedAt
         {
             get => _createdAt;
             set

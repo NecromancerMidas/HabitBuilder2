@@ -8,9 +8,12 @@
             Text="Welcome to .NET MAUI!"
             VerticalOptions="Center" 
             HorizontalOptions="Center" />
-        <mainPageHabitOverviewComponents:HabitOverviewHabitView/>
-        <mainPageHabitOverviewComponents:HabitOverviewHabitView/>
-        <mainPageHabitOverviewComponents:HabitOverviewHabitView/>
-        <mainPageHabitOverviewComponents:HabitOverviewHabitView/>
+        <CollectionView ItemsSource="{Binding HabitList}">
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <mainPageHabitOverviewComponents:HabitOverviewHabitView/>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
     </VerticalStackLayout>
 </ContentView>

@@ -1,5 +1,12 @@
 
 
+using System.Diagnostics;
+using HabitBuilder2.Models;
+using HabitBuilder2.Services;
+using HabitBuilder2.TempDB;
+using HabitBuilder2.ViewModels;
+using HabitBuilder2.ViewModels.Templates;
+
 namespace HabitBuilder2.Views.MainPage.Components.MainPageHabitOverviewComponents;
 
 public partial class HabitOverviewHabitView : ContentView
@@ -15,10 +22,14 @@ public partial class HabitOverviewHabitView : ContentView
         nameof(HabitStreak), typeof(int), typeof(HabitOverviewHabitView), default(int));*/
 
 
-    public HabitOverviewHabitView()
-	{
+    public HabitOverviewHabitView() {
+        
+        Debug.WriteLine(BindingContext);
         InitializeComponent();
+        Debug.WriteLine(BindingContext);
     }
+
+    public HabitViewModel ViewModel { get; set; }
 
     /*public string HabitTitle
     {

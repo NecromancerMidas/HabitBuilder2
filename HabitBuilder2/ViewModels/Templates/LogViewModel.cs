@@ -10,7 +10,7 @@ public class LogViewModel : INotifyPropertyChanged
     private string _accomplish;
     private string _challenges;
     private string _thoughts;
-    private DateTime _entryDate;
+    private DateTime? _entryDate;
 
     public LogViewModel(Log dayLog)
     {
@@ -68,7 +68,7 @@ public class LogViewModel : INotifyPropertyChanged
         }
     }
 
-    public DateTime EntryDate
+    public DateTime? EntryDate
     {
         get => _entryDate;
         set

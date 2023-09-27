@@ -21,12 +21,12 @@ public class Habit
     public int ExperiencePoints { get; set; }
     public int Level { get; set; }
     public Week WeekDays { get; set; }
-    public DateTime CreatedAt { get; set; }
+    public DateTime? CreatedAt { get; set; }
     public DateTime? UpdatedAt { get; set; } // Nullable, in case it hasn't been updated yet
     public DateTime? DeletedAt { get; set; } // Uncomment if you're using soft deletes
 
     public Habit()
     {
-        CreatedAt = DateTime.Now;
+        
     }
 }

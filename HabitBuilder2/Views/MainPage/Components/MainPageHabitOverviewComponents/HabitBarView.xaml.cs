@@ -16,14 +16,14 @@ public partial class HabitBarView : ContentView
         nameof(HabitStreak), typeof(int), typeof(HabitBarView), default(int));
 */
 
-    
-    private int _habitStreak = 5;
-    private readonly HabitBarWidthConverter _converter = new();
+
+   // private int _habitStreak = 5;
+    // private readonly HabitBarWidthConverter _converter = new();
 
     public HabitBarView()
     {
         InitializeComponent();
-        UpdateLoadingBarWidth();
+        //UpdateLoadingBarWidth();
     }
     /*public string HabitTitle
     {
@@ -36,25 +36,25 @@ public partial class HabitBarView : ContentView
         get => (int)GetValue(HabitLevelProp);
         set => SetValue(HabitLevelProp, value);
     }*/
-   /* public int HabitStreak
+    /* public int HabitStreak
+     {
+         get => (int)GetValue(HabitStreakProp);
+         set
+         {
+             SetValue(HabitStreakProp, value);
+             UpdateLoadingBarWidth();
+             System.Diagnostics.Debug.WriteLine("HabitStreak set: " + value);
+         }
+     }*/
+    /*  public void AnimateWidth(RoundRectangle loadingBar, double startWidth, double endWidth, uint duration)
+      {
+          loadingBar.Animate("WidthAnimation", d => loadingBar.WidthRequest = d, startWidth, endWidth, length: duration);
+      }
+  */
+    /*public void UpdateLoadingBarWidth()
     {
-        get => (int)GetValue(HabitStreakProp);
-        set
-        {
-            SetValue(HabitStreakProp, value);
-            UpdateLoadingBarWidth();
-            System.Diagnostics.Debug.WriteLine("HabitStreak set: " + value);
-        }
-    }*/
-    public void AnimateWidth(RoundRectangle loadingBar, double startWidth, double endWidth, uint duration)
-    {
-        loadingBar.Animate("WidthAnimation", d => loadingBar.WidthRequest = d, startWidth, endWidth, length: duration);
-    }
-
-    public void UpdateLoadingBarWidth()
-    {
-       /*var parentStreak = Parent as HabitOverviewHabitView;
-       if (parentStreak != null) _habitStreak = parentStreak.HabitStreak;*/
+       */ /*var parentStreak = Parent as HabitOverviewHabitView;
+       if (parentStreak != null) _habitStreak = parentStreak.HabitStreak;*/ /*
        var converterValue = _converter.Convert(_habitStreak, typeof(double), null, CultureInfo.CurrentCulture);
         if (converterValue is double value)
         {
@@ -63,4 +63,5 @@ public partial class HabitBarView : ContentView
         }
     }
 
+}*/
 }
