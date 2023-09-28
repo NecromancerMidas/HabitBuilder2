@@ -14,7 +14,22 @@
                           ItemTemplate="{DataTemplate views:HabitOverviewView}"
                           IndicatorView="CarouselOneIndicator"
                           HeightRequest="200"/>
-            <IndicatorView x:Name="CarouselOneIndicator" Margin="5"></IndicatorView>
+            <IndicatorView x:Name="CarouselOneIndicator" Margin="5" HorizontalOptions="Center"></IndicatorView>
+            <CarouselView Margin="0"
+                          HeightRequest="300"
+                          BackgroundColor="Green"
+                          IndicatorView="CarouselTwoIndicator"
+                          x:Name="TestCarousel">
+            </CarouselView>
+            <IndicatorView x:Name="CarouselTwoIndicator" Margin="0" HorizontalOptions="Center"></IndicatorView>
+            
+            <HorizontalStackLayout HeightRequest="129"  BackgroundColor="#e9b6b6">
+                <Label WidthRequest="270" Margin="7,0,0,0" VerticalOptions="Center" FontSize="14" Text="“If you are distressed by anything external, 
+the pain is not due to the thing itself, 
+but to your estimate of it; and this you have the power to revoke at any moment.”"
+                       />
+                <Image HeightRequest="120" Source="roman_chad.png" Margin="0,0,0,0"></Image>
+            </HorizontalStackLayout>
         </VerticalStackLayout>
     </ScrollView>
 

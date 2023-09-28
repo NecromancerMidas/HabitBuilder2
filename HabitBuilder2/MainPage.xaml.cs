@@ -15,7 +15,14 @@ public partial class MainPage : ContentPage
     public TemplateViewModel ChildViewModel;
     public MainPage()
 	{
+
+
+
         
+
+
+
+
 
 
         Debug.WriteLine(BindingContext);

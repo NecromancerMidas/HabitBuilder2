@@ -2,7 +2,10 @@ using System.Globalization;
 using Microsoft.Maui.Controls.Shapes;
 using HabitBuilder2.Utilities.HabitBar.Converter;
 using System.ComponentModel;
-
+using System.Diagnostics;
+using HabitBuilder2.Models.Templates;
+using HabitBuilder2.ViewModels.Templates;
+using Microsoft.Maui.Controls;
 
 namespace HabitBuilder2.Views.MainPage.Components.MainPageHabitOverviewComponents;
 
@@ -17,14 +20,77 @@ public partial class HabitBarView : ContentView
 */
 
 
-   // private int _habitStreak = 5;
-    // private readonly HabitBarWidthConverter _converter = new();
+    // private int _habitStreak = 5;
+    private readonly HabitBarWidthConverter _converter = new();
 
     public HabitBarView()
     {
         InitializeComponent();
-        //UpdateLoadingBarWidth();
+        Debug.WriteLine(BindingContext);
+
     }
+
+    protected override void OnSizeAllocated(double width, double height)
+    {
+        base.OnSizeAllocated(width, height);
+        SetStatus();
+        UpdateLoadingBarWidth();
+        
+    }
+    protected override void OnBindingContextChanged()
+    {
+        base.OnBindingContextChanged();
+
+        if (BindingContext is INotifyPropertyChanged notifyPropertyChanged)
+        {
+            notifyPropertyChanged.PropertyChanged += ViewModel_PropertyChanged;
+        }
+    }
+    private void ViewModel_PropertyChanged(object sender, PropertyChangedEventArgs e)
+    {
+        if (e.PropertyName == "ExperiencePoints")
+        {
+            UpdateLoadingBarWidth();
+        }
+
+        if (e.PropertyName == "Status")
+        { 
+            SetStatus();
+        }
+    }
+
+    private void SetStatus()
+    {
+        if (BindingContext is HabitViewModel viewModel)
+        {
+            switch (viewModel.Status)
+            {
+                case HabitStatus.InProgress:
+                    Status.Text = "In Progress";
+                    StatusColor.BackgroundColor = Color.FromArgb("#ff960f");
+                    break;
+                case HabitStatus.Frozen:
+                    Status.Text = "Frozen";
+                    StatusColor.BackgroundColor = Color.FromArgb("#3499FE");
+                    break;
+                case HabitStatus.Completed:
+                    Status.Text = "Completed";
+                    StatusColor.BackgroundColor = Color.FromArgb("#008000");
+                    break;
+                case HabitStatus.Selected:
+                    Status.Text = "Selected";
+                    StatusColor.BackgroundColor = Color.FromArgb("#a403aa");
+                    break;
+                default:
+                    Status.Text = "error";
+                    StatusColor.BackgroundColor = Color.FromArgb("#8000ff");
+                    break;
+            }
+        }
+
+    }
+
+
     /*public string HabitTitle
     {
         get => (string)GetValue(HabitTitleProp);
@@ -51,17 +117,25 @@ public partial class HabitBarView : ContentView
           loadingBar.Animate("WidthAnimation", d => loadingBar.WidthRequest = d, startWidth, endWidth, length: duration);
       }
   */
-    /*public void UpdateLoadingBarWidth()
+    public void UpdateLoadingBarWidth()
     {
-       */ /*var parentStreak = Parent as HabitOverviewHabitView;
-       if (parentStreak != null) _habitStreak = parentStreak.HabitStreak;*/ /*
-       var converterValue = _converter.Convert(_habitStreak, typeof(double), null, CultureInfo.CurrentCulture);
-        if (converterValue is double value)
+        if (BindingContext is HabitViewModel viewModel)
         {
-           var width = (150 / 21) * value;
-            LoadingRectangle.WidthRequest = width;
+
+            var converterValue = _converter.Convert(viewModel.ExperiencePoints, typeof(double), null, CultureInfo.CurrentCulture);
+            if (converterValue is double value)
+            {
+                var width = (150 / 21) * value;
+                LoadingRectangle.Animate("Progress",
+                    d => LoadingRectangle.WidthRequest = d,
+                    LoadingRectangle.WidthRequest,
+                    width,
+                    16,
+                    6000,
+                    Easing.Linear);
+
+            }
         }
     }
 
-}*/
 }

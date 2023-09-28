@@ -17,9 +17,9 @@
         </ResourceDictionary>
         </VerticalStackLayout.Resources>
         <Grid>
-            <Border HeightRequest="37" 
-                    StrokeThickness="0" 
-                    BackgroundColor="green" 
+            <Border x:Name="StatusColor"
+                    HeightRequest="37"
+                    StrokeThickness="0"
                     WidthRequest="154"
                     Margin="18,3,0,0" 
                     HorizontalOptions="Start" 
@@ -28,14 +28,22 @@
                     <RoundRectangle CornerRadius="20"></RoundRectangle>
                 </Border.StrokeShape>
                 <Border.Shadow>
-                    <Shadow Radius="30" Offset="-15,3"/>
+                    <Shadow Radius="21" Offset="-15,0"/>
                 </Border.Shadow>
+                <Grid>
                 <Label
                     Margin="13,0,0,0" 
                     HorizontalOptions="Start" 
                     VerticalOptions="Start" 
                     FontSize="10" 
                     Text="{Binding Title}"/>
+                    <Label 
+                           FontSize="10"
+                           HorizontalOptions="End"
+                           VerticalOptions="Start"
+                           x:Name="Status"
+                           Margin="0,0,11,0"></Label>
+                </Grid>
             </Border>
             <Border 
                 Stroke="blue" 
@@ -51,7 +59,7 @@
                     <RoundRectangle x:Name="BarRectangle" WidthRequest="20" CornerRadius="20" HorizontalOptions="Start"/>
                 </Border.StrokeShape>
                 <Grid>
-                    <RoundRectangle x:Name="LoadingRectangle" Background="{StaticResource BarLoadGradient}" CornerRadius="20" HorizontalOptions="Start"
+                    <RoundRectangle x:Name="LoadingRectangle" WidthRequest="0" Background="{StaticResource BarLoadGradient}" CornerRadius="20" HorizontalOptions="Start"
                                     x:DataType="local:HabitBarView"/>
                     <Label Text="{Binding Level,StringFormat='Lvl.{0}'}" TextColor="Black" VerticalOptions="Center" Margin="8,0,0,0"></Label>
                     <Label Text="{Binding ExperiencePoints,StringFormat='{0}/21'}" TextColor="Black" HorizontalOptions="End" VerticalOptions="Center" Margin="0,0,8,0"></Label>

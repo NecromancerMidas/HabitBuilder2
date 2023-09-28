@@ -3,17 +3,20 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:mainPageHabitOverviewComponents="clr-namespace:HabitBuilder2.Views.MainPage.Components.MainPageHabitOverviewComponents"
              x:Class="HabitBuilder2.Views.MainPage.HabitOverviewView">
-    <VerticalStackLayout BackgroundColor="AntiqueWhite" HorizontalOptions="Fill" HeightRequest="200">
-        <Label 
-            Text="Welcome to .NET MAUI!"
-            VerticalOptions="Center" 
-            HorizontalOptions="Center" />
-        <CollectionView ItemsSource="{Binding HabitList}">
+    <CollectionView HorizontalOptions="Fill"  
+                    BackgroundColor="AntiqueWhite" 
+                    HeightRequest="200" 
+                    ItemsSource="{Binding HabitList}">
+        <CollectionView.Header>
+                <Label
+                    Text="{Binding Title}"
+                       VerticalOptions="Start" 
+                       HorizontalOptions="Center"/>
+                </CollectionView.Header>
             <CollectionView.ItemTemplate>
                 <DataTemplate>
                     <mainPageHabitOverviewComponents:HabitOverviewHabitView/>
                 </DataTemplate>
             </CollectionView.ItemTemplate>
         </CollectionView>
-    </VerticalStackLayout>
 </ContentView>
