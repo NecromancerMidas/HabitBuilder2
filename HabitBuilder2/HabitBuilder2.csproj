@@ -61,6 +61,9 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <Compile Update="Views\MainPage\DetailedView.xaml.cs">
+	    <DependentUpon>DetailedView.xaml</DependentUpon>
+	  </Compile>
 	  <Compile Update="Views\MainPage\HabitOverviewView.xaml.cs">
 	    <DependentUpon>HabitOverviewView.xaml</DependentUpon>
 	  </Compile>
@@ -80,6 +83,9 @@
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="Views\MainPage\Components\MainPageHabitOverviewComponents\StreakIndicator.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\MainPage\DetailedView.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="Views\MainPage\HabitOverviewView.xaml">
