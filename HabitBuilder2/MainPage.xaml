@@ -4,9 +4,18 @@
              xmlns:carouselOne="clr-namespace:HabitBuilder2.Selectors.MainPage.CarouselOne"
              xmlns:views="clr-namespace:HabitBuilder2.Views.MainPage"
              x:Class="HabitBuilder2.MainPage">
+
+    <ContentPage.Resources>
+        <ControlTemplate x:Key="DetailedView">
+            
+        </ControlTemplate>
+        <ControlTemplate x:Key="EditView">
+            <views:EditView/>
+        </ControlTemplate>
+    </ContentPage.Resources>
     <ScrollView>
         <VerticalStackLayout
-            Spacing="15"
+            Spacing="10"
             Padding="0,0" 
             VerticalOptions="Start"
             HorizontalOptions="Fill">
@@ -14,19 +23,15 @@
                           ItemTemplate="{DataTemplate views:HabitOverviewView}"
                           IndicatorView="CarouselOneIndicator"
                           HeightRequest="200"/>
-            <IndicatorView x:Name="CarouselOneIndicator" Margin="5" HorizontalOptions="Center"></IndicatorView>
-            <CarouselView Margin="0"
-                          HeightRequest="300"
-                          BackgroundColor="Green"
-                          IndicatorView="CarouselTwoIndicator"
-                          x:Name="TestCarousel">
-            </CarouselView>
-            <IndicatorView x:Name="CarouselTwoIndicator" Margin="0" HorizontalOptions="Center"></IndicatorView>
-            
+            <IndicatorView x:Name="CarouselOneIndicator" 
+                           HorizontalOptions="Center"
+                          ></IndicatorView>
+                <views:DetailedView/>
+               
             <HorizontalStackLayout HeightRequest="129"  BackgroundColor="#e9b6b6">
                 <Label WidthRequest="270" Margin="7,0,0,0" VerticalOptions="Center" FontSize="14" Text="“If you are distressed by anything external, 
 the pain is not due to the thing itself, 
-but to your estimate of it; and this you have the power to revoke at any moment.”"
+but to your estimate of it; and this you have the power to revoke at any moment.” - Marcus Aurelius"
                        />
                 <Image HeightRequest="120" Source="roman_chad.png" Margin="0,0,0,0"></Image>
             </HorizontalStackLayout>

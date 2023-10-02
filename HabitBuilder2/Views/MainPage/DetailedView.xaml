@@ -2,6 +2,22 @@
 
 <ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:components="clr-namespace:HabitBuilder2.Views.MainPage.Components.DetailedViewComponents"
              x:Class="HabitBuilder2.Views.MainPage.DetailedView">
-    
+
+
+<VerticalStackLayout Spacing="10">
+    <CarouselView
+        ItemsSource="{Binding Templates}"
+        ItemTemplate="{DataTemplate components:SpecificHabitOverview}"
+        Margin="0"
+        HeightRequest="275"
+        BackgroundColor="Green"
+        IndicatorView="CarouselTwoIndicator"
+        x:Name="TestCarousel">
+    </CarouselView>
+    <IndicatorView x:Name="CarouselTwoIndicator" Margin="0" HorizontalOptions="Center"></IndicatorView>
+</VerticalStackLayout>
+
+
 </ContentView>
