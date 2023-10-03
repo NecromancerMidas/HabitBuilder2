@@ -18,7 +18,7 @@ namespace HabitBuilder2.ViewModels.Templates
         private ObservableCollection<HabitViewModel> _habitList;
         private ISelectable _selectedItem;
 
-        public ISelectable SelectedItem
+        public ISelectable SelectedItem //HabitViewModel
         {
             get => _selectedItem;
             set
