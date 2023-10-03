@@ -6,7 +6,8 @@
     <CollectionView HorizontalOptions="Fill"  
                     BackgroundColor="AntiqueWhite" 
                     HeightRequest="200" 
-                    ItemsSource="{Binding HabitList}">
+                    ItemsSource="{Binding HabitList}"
+                    SelectedItem="{Binding SelectedItem, Mode=TwoWay}">
         <CollectionView.Header>
                 <Label
                     Text="{Binding Title}"

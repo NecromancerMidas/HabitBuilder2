@@ -7,7 +7,6 @@ namespace HabitBuilder2.Models.Templates;
 public enum HabitStatus
 {
     NotStarted,
-    Selected,
     InProgress,
     Frozen,
     Completed,

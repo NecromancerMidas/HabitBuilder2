@@ -4,15 +4,19 @@ using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Input;
 using HabitBuilder2.Models.Templates;
+using HabitBuilder2.Services;
+using Debug = System.Diagnostics.Debug;
 
 namespace HabitBuilder2.ViewModels.Templates
 {
-    public class HabitViewModel : INotifyPropertyChanged
+    public class HabitViewModel : INotifyPropertyChanged, ISelectable
     {
 
-
+        private TemplateViewModel _parent { get; set; }
         private HabitStatus _status;
+        private bool _selected;
         private string _title;
         private string _description;
         private Guid _guid;
@@ -22,6 +26,25 @@ namespace HabitBuilder2.ViewModels.Templates
         private DateTime? _createdAt;
         private DateTime? _updatedAt;
         private DateTime? _deletedAt;
+        public ICommand BarSelectedCommand { get; set; }
+
+
+        public HabitViewModel(Habit habitModel, TemplateViewModel parent)
+        {
+            _selected = false;
+            _status = habitModel.Status;
+            _title = habitModel.Title;
+            _description = habitModel.Description;
+            _guid = habitModel.Guid;
+            _experiencePoints = habitModel.ExperiencePoints;
+            _level = habitModel.Level;
+            _weekDays = new WeekViewModel(habitModel.WeekDays);
+            _createdAt = habitModel.CreatedAt;
+            _updatedAt = habitModel.UpdatedAt;
+            _deletedAt = habitModel.DeletedAt;
+            BarSelectedCommand = new Command(() => SetSelected(!Selected));
+            _parent = parent;
+        }
 
         public HabitStatus Status
         {
@@ -133,22 +156,17 @@ namespace HabitBuilder2.ViewModels.Templates
             }
         }
 
-
-
-
-        public HabitViewModel(Habit habitModel)
+        public bool Selected
         {
-            _status = habitModel.Status;
-            _title = habitModel.Title;
-            _description = habitModel.Description;
-            _guid = habitModel.Guid;
-            _experiencePoints = habitModel.ExperiencePoints;
-            _level = habitModel.Level;
-            _weekDays = new WeekViewModel(habitModel.WeekDays);
-            _createdAt = habitModel.CreatedAt;
-            _updatedAt = habitModel.UpdatedAt;
-            _deletedAt = habitModel.DeletedAt;
+            get => _selected;
+            set
+            {
+                if (value == _selected) return;
+                _selected = value;
+                OnPropertyChanged(nameof(Selected));
+            }
         }
+        
 
         // ... [Repeat for other properties like Title, Description, etc.]
 
@@ -160,5 +178,16 @@ namespace HabitBuilder2.ViewModels.Templates
         }
 
         // You can also have methods or commands to handle interactions specific to the ViewModel.
+        
+        
+        public void SetSelected(bool selected)
+        {
+            
+            Debug.WriteLine("tapped");
+            Debug.WriteLine(Selected);
+            Selected = selected;
+            _parent.SelectedItem = this;
+            Debug.WriteLine(Selected);
+        }
     }
 }

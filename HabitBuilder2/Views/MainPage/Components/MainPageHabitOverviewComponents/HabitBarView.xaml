@@ -6,6 +6,9 @@
              x:Class="HabitBuilder2.Views.MainPage.Components.MainPageHabitOverviewComponents.HabitBarView">
     
     <VerticalStackLayout>
+        <VerticalStackLayout.GestureRecognizers>
+            <TapGestureRecognizer Command="{Binding BarSelectedCommand}" NumberOfTapsRequired="1"/>
+        </VerticalStackLayout.GestureRecognizers>
         <VerticalStackLayout.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>

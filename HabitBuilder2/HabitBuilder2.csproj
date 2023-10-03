@@ -65,6 +65,9 @@
 	  <Compile Update="Views\MainPage\Components\DetailedViewComponents\SpecificHabitOverview.xaml.cs">
 	    <DependentUpon>SpecificHabitOverview.xaml</DependentUpon>
 	  </Compile>
+	  <Compile Update="Views\MainPage\DetailedTemplateView.xaml.cs">
+	    <DependentUpon>DetailedTemplateView.xaml</DependentUpon>
+	  </Compile>
 	  <Compile Update="Views\MainPage\EditView.xaml.cs">
 	    <DependentUpon>EditView.xaml</DependentUpon>
 	  </Compile>

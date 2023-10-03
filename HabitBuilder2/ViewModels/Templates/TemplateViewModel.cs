@@ -6,6 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using HabitBuilder2.Models.Templates;
+using HabitBuilder2.Services;
 
 namespace HabitBuilder2.ViewModels.Templates
 {
@@ -15,7 +16,33 @@ namespace HabitBuilder2.ViewModels.Templates
         private string _description;
         private Guid _id;
         private ObservableCollection<HabitViewModel> _habitList;
+        private ISelectable _selectedItem;
 
+        public ISelectable SelectedItem
+        {
+            get => _selectedItem;
+            set
+            {
+                if (_selectedItem != value)
+                {
+                    // Deselect the previous item
+                    if (_selectedItem != null)
+                    {
+                        _selectedItem.SetSelected(false);
+                    }
+
+                    _selectedItem = value;
+
+                    // Select the new item
+                    if (_selectedItem != null)
+                    {
+                        _selectedItem.SetSelected(true);
+                    }
+
+                    OnPropertyChanged(nameof(SelectedItem));
+                }
+            }
+        }
         public string Title
         {
             get => _title;
@@ -68,7 +95,7 @@ namespace HabitBuilder2.ViewModels.Templates
             Title = template.Title;
             Description = template.Description;
             Id = template.Id;
-            HabitList = new ObservableCollection<HabitViewModel>(template.HabitList.Select(h => new HabitViewModel(h)));
+            HabitList = new ObservableCollection<HabitViewModel>(template.HabitList.Select(h => new HabitViewModel(h,this)));
         }
         // Additional commands or methods for UI interaction can be added here.
     }

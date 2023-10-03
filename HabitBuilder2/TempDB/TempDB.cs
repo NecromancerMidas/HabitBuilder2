@@ -66,7 +66,7 @@ namespace HabitBuilder2.TempDB
                 ExperiencePoints = 14,
                 Guid = new Guid(),
                 Level =5,
-                Status = HabitStatus.Selected,
+                Status = HabitStatus.InProgress,
                 UpdatedAt = null,
             };
 

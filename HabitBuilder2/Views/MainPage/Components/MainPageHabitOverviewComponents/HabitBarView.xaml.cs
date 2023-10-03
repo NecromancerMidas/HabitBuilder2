@@ -53,16 +53,33 @@ public partial class HabitBarView : ContentView
             UpdateLoadingBarWidth();
         }
 
-        if (e.PropertyName == "Status")
+        if (e.PropertyName == "Status" || e.PropertyName == "Selected")
         { 
+            
             SetStatus();
         }
+        
     }
 
+   /* private void BarSelected(object sender, EventArgs e)
+    {
+        Debug.WriteLine("Tapped");
+        if (BindingContext is HabitViewModel viewModel)
+        {
+            viewModel.Status = HabitStatus.Selected;
+        }
+         
+    }*/
     private void SetStatus()
     {
         if (BindingContext is HabitViewModel viewModel)
         {
+            if (viewModel.Selected)
+            {
+                Status.Text = "Selected";
+                StatusColor.BackgroundColor = Color.FromArgb("#a403aa");
+                return;
+            }
             switch (viewModel.Status)
             {
                 case HabitStatus.InProgress:
@@ -77,10 +94,7 @@ public partial class HabitBarView : ContentView
                     Status.Text = "Completed";
                     StatusColor.BackgroundColor = Color.FromArgb("#008000");
                     break;
-                case HabitStatus.Selected:
-                    Status.Text = "Selected";
-                    StatusColor.BackgroundColor = Color.FromArgb("#a403aa");
-                    break;
+                
                 default:
                     Status.Text = "error";
                     StatusColor.BackgroundColor = Color.FromArgb("#8000ff");
