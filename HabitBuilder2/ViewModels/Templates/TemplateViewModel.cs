@@ -12,11 +12,39 @@ namespace HabitBuilder2.ViewModels.Templates
 {
     public class TemplateViewModel : INotifyPropertyChanged
     {
+        public enum ViewType
+        {
+            DetailedTemplateView,
+            TemplateEditView,
+            GraphsOrSomething
+        }
+        public ViewType CurrentView { get; set; }
+        public string DisplayMode { get; set; }
+        public ObservableCollection<TemplateViewModel> CarouselOneTemplate { get;set; }
         private string _title;
         private string _description;
         private Guid _id;
         private ObservableCollection<HabitViewModel> _habitList;
         private ISelectable _selectedItem;
+
+        public TemplateViewModel(Template template)
+        {
+            Title = template.Title;
+            Description = template.Description;
+            Id = template.Id;
+            HabitList = new ObservableCollection<HabitViewModel>(template.HabitList.Select(h => new HabitViewModel(h, this)));
+            CarouselOneTemplate = new ObservableCollection<TemplateViewModel>
+            {
+                CloneWithViewType(ViewType.DetailedTemplateView),
+                CloneWithViewType(ViewType.GraphsOrSomething),
+            };
+        }
+        public TemplateViewModel CloneWithViewType(ViewType viewType)
+        {
+            var clone = (TemplateViewModel)this.MemberwiseClone();
+            clone.CurrentView = viewType;
+            return clone;
+        }
 
         public ISelectable SelectedItem //HabitViewModel
         {
@@ -90,13 +118,7 @@ namespace HabitBuilder2.ViewModels.Templates
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
 
-        public TemplateViewModel(Template template)
-        {
-            Title = template.Title;
-            Description = template.Description;
-            Id = template.Id;
-            HabitList = new ObservableCollection<HabitViewModel>(template.HabitList.Select(h => new HabitViewModel(h,this)));
-        }
+        
         // Additional commands or methods for UI interaction can be added here.
     }
 }

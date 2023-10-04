@@ -6,6 +6,7 @@ using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Input;
 using HabitBuilder2.Models;
 using HabitBuilder2.Services;
 using HabitBuilder2.ViewModels.Templates;
@@ -16,13 +17,20 @@ namespace HabitBuilder2.ViewModels
     {
         private ObservableCollection<TemplateViewModel> _templates;
 
-
-        
+        private TemplateViewModel _selectedTemplate;
+        public ICommand ItemChangedCommand { get; }
 
         public MainPageViewModel(MainPageModel mainpage)
         {
+            ItemChangedCommand = new Command<TemplateViewModel>(OnItemChanged);
             Templates =
                 new ObservableCollection<TemplateViewModel>(mainpage.Templates.Select(t => new TemplateViewModel(t)));
+        }
+        private void OnItemChanged(TemplateViewModel newItem)
+        {
+            // Do something with the new item
+            Console.WriteLine($"Selected item: {newItem}");
+            SelectedTemplate = newItem;
         }
 
         public ObservableCollection<TemplateViewModel> Templates
@@ -31,6 +39,16 @@ namespace HabitBuilder2.ViewModels
             set
             {
                 _templates = value;
+                OnPropertyChanged();
+            }
+        }
+
+        public TemplateViewModel SelectedTemplate
+        {
+            get => _selectedTemplate;
+            set
+            {
+                _selectedTemplate = value;
                 OnPropertyChanged();
             }
         }

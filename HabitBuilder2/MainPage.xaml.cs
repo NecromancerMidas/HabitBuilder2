@@ -13,13 +13,14 @@ public partial class MainPage : ContentPage
 {
     public MainPageViewModel ViewModel;
     public TemplateViewModel ChildViewModel;
+    public TemplateViewModel CarouselOneCurrentItem;
     public MainPage()
 	{
 
 
 
         
-
+        
 
 
 

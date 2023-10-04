@@ -58,17 +58,16 @@
 
 	<ItemGroup>
 	  <Folder Include="TempDB\Habits\" />
-	  <Folder Include="Views\MainPage\Components\DetailedViewComponents\" />
 	</ItemGroup>
 
 	<ItemGroup>
 	  <Compile Update="Views\MainPage\Components\DetailedViewComponents\SpecificHabitOverview.xaml.cs">
 	    <DependentUpon>SpecificHabitOverview.xaml</DependentUpon>
 	  </Compile>
-	  <Compile Update="Views\MainPage\DetailedTemplateView.xaml.cs">
+	  <Compile Update="Views\MainPage\Components\DetailedViewComponents\DetailedTemplateView.xaml.cs">
 	    <DependentUpon>DetailedTemplateView.xaml</DependentUpon>
 	  </Compile>
-	  <Compile Update="Views\MainPage\EditView.xaml.cs">
+	  <Compile Update="Views\MainPage\Components\DetailedViewComponents\EditView.xaml.cs">
 	    <DependentUpon>EditView.xaml</DependentUpon>
 	  </Compile>
 	  <Compile Update="Views\MainPage\DetailedView.xaml.cs">
@@ -89,7 +88,7 @@
 	  <MauiXaml Update="Resources\Styles\MainPage\Components\MainPageHabitOverviewComponents\HabitBar\BarGradient.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="Views\MainPage\EditView.xaml">
+	  <MauiXaml Update="Views\MainPage\Components\DetailedViewComponents\EditView.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="Views\MainPage\Components\MainPageHabitOverviewComponents\HabitOverviewHabitView.xaml">

@@ -3,22 +3,45 @@
 <ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:components="clr-namespace:HabitBuilder2.Views.MainPage.Components.DetailedViewComponents"
+             xmlns:mainPage="using:HabitBuilder2.Selectors.MainPage"
+             xmlns:local="using:HabitBuilder2.ViewModels.Templates"
+             xmlns:converter="using:HabitBuilder2.Utilities.Converter"
              x:Class="HabitBuilder2.Views.MainPage.DetailedView">
 
+<ContentView.Resources>
+    <DataTemplate x:Key="DetailedTemplateView">
+        <components:DetailedTemplateView/>
+        </DataTemplate>
+    <DataTemplate x:Key="SpecificHabitView">
+        <components:SpecificHabitOverview/>
+        </DataTemplate>
+    <mainPage:DetailedViewTemplateSelector 
+        x:Key="DetailedViewSelector"
+        DetailedTemplateView="{StaticResource DetailedTemplateView}"
+        SpecificHabitOverview="{StaticResource SpecificHabitView}"/>
+    <converter:IsTypeConverter x:Key="IsTypeConverter" />
+</ContentView.Resources>
+    <VerticalStackLayout Spacing="10">
+        <components:DetailedTemplateView IsVisible="False">
+            <components:DetailedTemplateView.Triggers>
+                <DataTrigger TargetType="components:DetailedTemplateView"
+                             Binding="{Binding ., Converter={StaticResource IsTypeConverter}, ConverterParameter='HabitBuilder2.ViewModels.Templates.TemplateViewModel'}"
+                             Value="True">
+                    <Setter Property="IsVisible" Value="True"></Setter>
+                </DataTrigger>
+            </components:DetailedTemplateView.Triggers>
+        </components:DetailedTemplateView>
+        <components:SpecificHabitOverview IsVisible="False">
+            <components:SpecificHabitOverview.Triggers>
+                <DataTrigger TargetType="components:SpecificHabitOverview"
+                             Binding="{Binding ., Converter={StaticResource IsTypeConverter}, ConverterParameter='HabitBuilder2.ViewModels.Templates.HabitViewModel'}"
+                             Value="True">
+                    <Setter Property="IsVisible" Value="True"></Setter>
+                </DataTrigger>
+            </components:SpecificHabitOverview.Triggers>
+        </components:SpecificHabitOverview>
+    </VerticalStackLayout>
 
-<VerticalStackLayout Spacing="10">
-    <Label Text="Remember to remove carouselview here and move it to its children, and instead use logic here to decide what to show."></Label>
-    <CarouselView
-        ItemsSource="{Binding Templates}"
-        ItemTemplate="{DataTemplate components:SpecificHabitOverview}"
-        Margin="0"
-        HeightRequest="275"
-        BackgroundColor="Green"
-        IndicatorView="CarouselTwoIndicator"
-        x:Name="TestCarousel">
-    </CarouselView>
-    <IndicatorView x:Name="CarouselTwoIndicator" Margin="0" HorizontalOptions="Center"></IndicatorView>
-</VerticalStackLayout>
 
 
 </ContentView>

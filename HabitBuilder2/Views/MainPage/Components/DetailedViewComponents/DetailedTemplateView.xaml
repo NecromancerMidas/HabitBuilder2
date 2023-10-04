@@ -1,0 +1,33 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:detailedViewComponents="using:HabitBuilder2.Views.MainPage.Components.DetailedViewComponents"
+             xmlns:carouselOne="using:HabitBuilder2.Selectors.MainPage.CarouselOne"
+             x:Class="HabitBuilder2.Views.MainPage.Components.DetailedViewComponents.DetailedTemplateView">
+    <ContentView.Resources>
+        <ResourceDictionary>
+            <DataTemplate x:Key="DetailedTemplateView">
+                <detailedViewComponents:SpecificHabitOverview/>
+            </DataTemplate>
+            <DataTemplate x:Key="GraphsOrSomething">
+                <!-- Your graphs or something template here -->
+            </DataTemplate>
+            <carouselOne:CarouselOneTemplateSelector x:Key="CarouselTemplateSelector"
+                                            DetailedTemplateView="{StaticResource DetailedTemplateView}"
+                                            GraphsOrSomething="{StaticResource GraphsOrSomething}" />
+        </ResourceDictionary>
+    </ContentView.Resources>
+    <VerticalStackLayout Spacing="10">
+        <CarouselView
+            ItemsSource="{Binding CarouselOneTemplate}"
+            ItemTemplate="{StaticResource CarouselTemplateSelector}"
+            Margin="0"
+            HeightRequest="275"
+            BackgroundColor="Green"
+            IndicatorView="CarouselTwoIndicator"
+            x:Name="TestCarousel">
+        </CarouselView>
+        <IndicatorView x:Name="CarouselTwoIndicator" Margin="0" HorizontalOptions="Center"/>
+    </VerticalStackLayout>
+</ContentView>

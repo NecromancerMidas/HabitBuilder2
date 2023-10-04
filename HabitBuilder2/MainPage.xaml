@@ -3,14 +3,15 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:carouselOne="clr-namespace:HabitBuilder2.Selectors.MainPage.CarouselOne"
              xmlns:views="clr-namespace:HabitBuilder2.Views.MainPage"
+             xmlns:detailedViewComponents="using:HabitBuilder2.Views.MainPage.Components.DetailedViewComponents"
              x:Class="HabitBuilder2.MainPage">
 
     <ContentPage.Resources>
         <ControlTemplate x:Key="DetailedView">
-            
+            <views:DetailedView/>
         </ControlTemplate>
         <ControlTemplate x:Key="EditView">
-            <views:EditView/>
+            <detailedViewComponents:EditView/>
         </ControlTemplate>
     </ContentPage.Resources>
     <ScrollView>
@@ -22,11 +23,13 @@
             <CarouselView ItemsSource="{Binding Templates}"
                           ItemTemplate="{DataTemplate views:HabitOverviewView}"
                           IndicatorView="CarouselOneIndicator"
-                          HeightRequest="200"/>
+                          HeightRequest="200"
+                          x:Name="CarouselOne"
+                          CurrentItemChangedCommand="{Binding ItemChangedCommand}"
+                          CurrentItemChangedCommandParameter="{Binding Source={RelativeSource Self}, Path=CurrentItem}"/>
             <IndicatorView x:Name="CarouselOneIndicator" 
-                           HorizontalOptions="Center"
-                          ></IndicatorView>
-                <views:DetailedView/>
+                           HorizontalOptions="Center"></IndicatorView>
+                <views:DetailedView BindingContext="{Binding SelectedTemplate}"/>
                
             <HorizontalStackLayout HeightRequest="129"  BackgroundColor="#e9b6b6">
                 <Label WidthRequest="270" Margin="7,0,0,0" VerticalOptions="Center" FontSize="14" Text="“If you are distressed by anything external, 
