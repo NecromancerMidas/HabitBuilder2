@@ -1,0 +1,72 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:converter="clr-namespace:HabitBuilder2.Utilities.HabitBar.Converter"
+             x:Class="HabitBuilder2.Views.MainPage.Components.DetailedViewComponents.SpecificHabitOverviewComponents.DetailsBar">
+    <VerticalStackLayout>
+        <VerticalStackLayout.GestureRecognizers>
+            <TapGestureRecognizer Command="{Binding BarSelectedCommand}" NumberOfTapsRequired="1"/>
+        </VerticalStackLayout.GestureRecognizers>
+        <VerticalStackLayout.Resources>
+            <ResourceDictionary>
+                <ResourceDictionary.MergedDictionaries>
+                    <ResourceDictionary Source="/Resources/Styles/MainPage/Components/MainPageHabitOverviewComponents/HabitBar/BarGradient.xaml"></ResourceDictionary>
+                    <ResourceDictionary>
+                        <converter:HabitBarWidthConverter x:Key="BarWidthConverter"/>
+                    </ResourceDictionary>
+                </ResourceDictionary.MergedDictionaries>
+            </ResourceDictionary>
+        </VerticalStackLayout.Resources>
+        <Grid>
+            <Border x:Name="StatusColor"
+                    HeightRequest="37"
+                    StrokeThickness="0"
+                    WidthRequest="154"
+                    Margin="18,3,0,0" 
+                    HorizontalOptions="Start" 
+                    VerticalOptions="Start">
+                <Border.StrokeShape>
+                    <RoundRectangle CornerRadius="20"></RoundRectangle>
+                </Border.StrokeShape>
+                <Border.Shadow>
+                    <Shadow Radius="21" Offset="-15,0"/>
+                </Border.Shadow>
+                <Grid>
+                    <Label
+                    Margin="13,0,0,0" 
+                    HorizontalOptions="Start" 
+                    VerticalOptions="Start" 
+                    FontSize="10" 
+                    Text="{Binding Title}"/>
+                    <Label 
+                           FontSize="10"
+                           HorizontalOptions="End"
+                           VerticalOptions="Start"
+                           x:Name="Status"
+                           Margin="0,0,11,0"></Label>
+                </Grid>
+            </Border>
+            <Border 
+                Stroke="blue" 
+                StrokeThickness="0" 
+                Background="{StaticResource BarGradient}" 
+                HeightRequest="25"
+                WidthRequest="150" 
+                HorizontalOptions="Start"
+                Margin="20,15,0,0" 
+                VerticalOptions="Center">
+
+                <Border.StrokeShape>
+                    <RoundRectangle x:Name="BarRectangle" WidthRequest="20" CornerRadius="20" HorizontalOptions="Start"/>
+                </Border.StrokeShape>
+                <Grid>
+                    <RoundRectangle x:Name="LoadingRectangle" WidthRequest="0" Background="{StaticResource BarLoadGradient}" CornerRadius="20" HorizontalOptions="Start"/>
+                    <Label Text="{Binding Level,StringFormat='Lvl.{0}'}" TextColor="Black" VerticalOptions="Center" Margin="8,0,0,0"></Label>
+                    <Label Text="{Binding ExperiencePoints,StringFormat='{0}/21'}" TextColor="Black" HorizontalOptions="End" VerticalOptions="Center" Margin="0,0,8,0"></Label>
+                </Grid>
+            </Border>
+        </Grid>
+
+    </VerticalStackLayout>
+</ContentView>

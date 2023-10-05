@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
 using System.Text;
@@ -13,7 +14,14 @@ namespace HabitBuilder2.ViewModels.Templates
 {
     public class HabitViewModel : INotifyPropertyChanged, ISelectable
     {
+        public enum ViewType
+        {
+            SpecificHabitOverviewDetails,
+            SomethingElse
+        }
 
+        public ViewType CurrentView;
+        public ObservableCollection<HabitViewModel> Carousel { get; set; }
         private TemplateViewModel _parent { get; set; }
         private HabitStatus _status;
         private bool _selected;
@@ -28,7 +36,12 @@ namespace HabitBuilder2.ViewModels.Templates
         private DateTime? _deletedAt;
         public ICommand BarSelectedCommand { get; set; }
 
-
+        public HabitViewModel CloneWithViewType(ViewType viewType)
+        {
+            var clone = (HabitViewModel)this.MemberwiseClone();
+            clone.CurrentView = viewType;
+            return clone;
+        }
         public HabitViewModel(Habit habitModel, TemplateViewModel parent)
         {
             _selected = false;
@@ -44,6 +57,11 @@ namespace HabitBuilder2.ViewModels.Templates
             _deletedAt = habitModel.DeletedAt;
             BarSelectedCommand = new Command(() => SetSelected(!Selected));
             _parent = parent;
+            Carousel = new ObservableCollection<HabitViewModel>
+            {
+                CloneWithViewType(ViewType.SpecificHabitOverviewDetails),
+                CloneWithViewType(ViewType.SomethingElse),
+            };
         }
 
         public HabitStatus Status
@@ -187,6 +205,7 @@ namespace HabitBuilder2.ViewModels.Templates
             Debug.WriteLine(Selected);
             Selected = selected;
             _parent.SelectedItem = this;
+            Debug.WriteLine(_parent.SelectedItem);
             Debug.WriteLine(Selected);
         }
     }

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -26,6 +27,8 @@ namespace HabitBuilder2.ViewModels.Templates
         private Guid _id;
         private ObservableCollection<HabitViewModel> _habitList;
         private ISelectable _selectedItem;
+        public HabitViewModel SelectedHabit => SelectedItem as HabitViewModel;
+        public bool IsHabitSelected => SelectedItem != null;
 
         public TemplateViewModel(Template template)
         {
@@ -57,6 +60,7 @@ namespace HabitBuilder2.ViewModels.Templates
                     if (_selectedItem != null)
                     {
                         _selectedItem.SetSelected(false);
+                        
                     }
 
                     _selectedItem = value;
@@ -65,10 +69,19 @@ namespace HabitBuilder2.ViewModels.Templates
                     if (_selectedItem != null)
                     {
                         _selectedItem.SetSelected(true);
+                        
                     }
-
+                    Debug.WriteLine(_selectedItem);
                     OnPropertyChanged(nameof(SelectedItem));
+                    OnPropertyChanged(nameof(IsHabitSelected));
                 }
+
+                if (HabitList.Any(h => h.Selected)) return;
+                    _selectedItem = null;
+                    Debug.WriteLine(_selectedItem + " " + IsHabitSelected);
+                    OnPropertyChanged(nameof(SelectedItem));
+                    OnPropertyChanged(nameof(IsHabitSelected));
+                
             }
         }
         public string Title

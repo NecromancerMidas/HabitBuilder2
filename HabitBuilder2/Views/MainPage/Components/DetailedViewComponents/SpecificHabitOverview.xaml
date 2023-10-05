@@ -2,14 +2,33 @@
 
 <ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:mainPage="clr-namespace:HabitBuilder2.Selectors.MainPage"
+             xmlns:detailedViewComponents="clr-namespace:HabitBuilder2.Views.MainPage.Components.DetailedViewComponents"
+             xmlns:specificHabitOverviewComponents="clr-namespace:HabitBuilder2.Views.MainPage.Components.DetailedViewComponents.SpecificHabitOverviewComponents"
              x:Class="HabitBuilder2.Views.MainPage.Components.DetailedViewComponents.SpecificHabitOverview">
-    <VerticalStackLayout>
-        <VerticalStackLayout>
-                <Label Text="{Binding Title}" HorizontalOptions="Center"/>
-                <Label Text="{Binding Level,StringFormat='Level.{0}'}" HorizontalOptions="Center"/>
-            </VerticalStackLayout>
-        <VerticalStackLayout>
-            <Label Text="Progress"/>
-        </VerticalStackLayout>
+    <ContentView.Resources>
+        <ResourceDictionary>
+            <DataTemplate x:Key="SpecificHabitOverviewDetails">
+                <specificHabitOverviewComponents:SpecificHabitOverviewDetails/>
+            </DataTemplate>
+            <DataTemplate x:Key="SomethingElse">
+                <!-- Your graphs or something template here -->
+            </DataTemplate>
+            <mainPage:SpecificHabitOverviewSelector x:Key="CarouselHabitSelector"
+                                                     SpecificHabitOverViewDetails="{StaticResource SpecificHabitOverviewDetails}"
+                                                     SomethingElse="{StaticResource SomethingElse}" />
+        </ResourceDictionary>
+    </ContentView.Resources>
+    <VerticalStackLayout Spacing="10">
+        <CarouselView
+            ItemsSource="{Binding Carousel}"
+            ItemTemplate="{StaticResource CarouselHabitSelector}"
+            Margin="0"
+            HeightRequest="275"
+            BackgroundColor="Green"
+            IndicatorView="CarouselHabitIndicator"
+            x:Name="TestCarousel">
+        </CarouselView>
+        <IndicatorView x:Name="CarouselHabitIndicator" Margin="0" HorizontalOptions="Center"/>
     </VerticalStackLayout>
 </ContentView>

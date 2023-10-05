@@ -22,21 +22,31 @@
     <converter:IsTypeConverter x:Key="IsTypeConverter" />
 </ContentView.Resources>
     <VerticalStackLayout Spacing="10">
-        <components:DetailedTemplateView IsVisible="False">
+        <components:DetailedTemplateView IsVisible="True">
             <components:DetailedTemplateView.Triggers>
                 <DataTrigger TargetType="components:DetailedTemplateView"
-                             Binding="{Binding ., Converter={StaticResource IsTypeConverter}, ConverterParameter='HabitBuilder2.ViewModels.Templates.TemplateViewModel'}"
+                             Binding="{Binding IsHabitSelected}"
                              Value="True">
+                    <Setter Property="IsVisible" Value="False"></Setter>
+                </DataTrigger>
+                <DataTrigger TargetType="components:DetailedTemplateView"
+                             Binding="{Binding IsHabitSelected}"
+                             Value="False">
                     <Setter Property="IsVisible" Value="True"></Setter>
                 </DataTrigger>
             </components:DetailedTemplateView.Triggers>
         </components:DetailedTemplateView>
-        <components:SpecificHabitOverview IsVisible="False">
+        <components:SpecificHabitOverview IsVisible="False" BindingContext="{Binding SelectedItem}">
             <components:SpecificHabitOverview.Triggers>
                 <DataTrigger TargetType="components:SpecificHabitOverview"
-                             Binding="{Binding ., Converter={StaticResource IsTypeConverter}, ConverterParameter='HabitBuilder2.ViewModels.Templates.HabitViewModel'}"
+                             Binding="{Binding Selected}"
                              Value="True">
                     <Setter Property="IsVisible" Value="True"></Setter>
+                </DataTrigger>
+                <DataTrigger TargetType="components:SpecificHabitOverview"
+                             Binding="{Binding Selected}"
+                             Value="False">
+                    <Setter Property="IsVisible" Value="False"></Setter>
                 </DataTrigger>
             </components:SpecificHabitOverview.Triggers>
         </components:SpecificHabitOverview>

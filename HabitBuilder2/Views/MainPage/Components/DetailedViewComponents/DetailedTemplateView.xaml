@@ -4,11 +4,12 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:detailedViewComponents="using:HabitBuilder2.Views.MainPage.Components.DetailedViewComponents"
              xmlns:carouselOne="using:HabitBuilder2.Selectors.MainPage.CarouselOne"
+             xmlns:detailedTemplateViewComponents="clr-namespace:HabitBuilder2.Views.MainPage.Components.DetailedViewComponents.DetailedTemplateViewComponents"
              x:Class="HabitBuilder2.Views.MainPage.Components.DetailedViewComponents.DetailedTemplateView">
     <ContentView.Resources>
         <ResourceDictionary>
             <DataTemplate x:Key="DetailedTemplateView">
-                <detailedViewComponents:SpecificHabitOverview/>
+                <detailedTemplateViewComponents:TemplateOverview/>
             </DataTemplate>
             <DataTemplate x:Key="GraphsOrSomething">
                 <!-- Your graphs or something template here -->
