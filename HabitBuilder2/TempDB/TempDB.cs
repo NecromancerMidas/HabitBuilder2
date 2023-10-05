@@ -46,7 +46,7 @@ namespace HabitBuilder2.TempDB
             var habit3 = new Habit
             {
                 Title = "Exercise",
-                Description = "Ivdea Delenda Est",
+                Description = "Iudaea Delenda Est",
                 WeekDays = new Week(), // This will initialize 7 days
                 CreatedAt = DateTime.Now,
                 DeletedAt = null,
