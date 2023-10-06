@@ -45,8 +45,8 @@ namespace HabitBuilder2.TempDB
             };
             var habit3 = new Habit
             {
-                Title = "Exercise",
-                Description = "Iudaea Delenda Est",
+                Title = "Latinae Lego",
+                Description = "Alea iacta est",
                 WeekDays = new Week(), // This will initialize 7 days
                 CreatedAt = DateTime.Now,
                 DeletedAt = null,
@@ -59,7 +59,11 @@ namespace HabitBuilder2.TempDB
             var habit4 = new Habit
             {
                 Title = "Exercise",
-                Description = "Take back Constantinople",
+                Description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad " +
+                              "minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in " +
+                              "reprehenderit in voluptate velit esse cillum dolore eu fugiat " +
+                              "nulla pariatur. Excepteur sint occaecat cupidatat non proident, " +
+                              "sunt in culpa qui officia deserunt mollit anim id est laborum.",
                 WeekDays = new Week(), // This will initialize 7 days
                 CreatedAt = DateTime.Now,
                 DeletedAt = null,
@@ -84,9 +88,17 @@ namespace HabitBuilder2.TempDB
                 HabitList = new List<Habit> { habit2, habit1, habit4, habit3 },
                 Id = new Guid()
             };
+            var template3 = new Template()
+            {
+                Title = "Big ass list",
+                Description = "Pizza",
+                HabitList = new List<Habit> { habit2, habit1, habit4, habit3, habit2, habit1, habit4, habit3 },
+                Id = new Guid()
+            };
 
             Templates.Add(template);
             Templates.Add(template2);
+            Templates.Add(template3);
         }
     }
 }
