@@ -58,6 +58,7 @@
 
 	<ItemGroup>
 	  <Folder Include="TempDB\Habits\" />
+	  <Folder Include="Utilities\MarkupExtensions\" />
 	  <Folder Include="Views\MainPage\Components\DetailedViewComponents\DetailedTemplateViewComponents\" />
 	</ItemGroup>
 
@@ -79,6 +80,9 @@
 	  </Compile>
 	  <Compile Update="Views\MainPage\Components\DetailedViewComponents\SpecificHabitOverviewComponents\SpecificHabitOverviewDetails.xaml.cs">
 	    <DependentUpon>SpecificHabitOverviewDetails.xaml</DependentUpon>
+	  </Compile>
+	  <Compile Update="Views\MainPage\Components\DetailedViewComponents\SpecificHabitOverviewComponents\SpecificHabitOverviewDetailsSectionOne.xaml.cs">
+	    <DependentUpon>SpecificHabitOverviewDetailsSectionOne.xaml</DependentUpon>
 	  </Compile>
 	  <Compile Update="Views\MainPage\DetailedView.xaml.cs">
 	    <DependentUpon>DetailedView.xaml</DependentUpon>
@@ -105,6 +109,9 @@
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="Views\MainPage\Components\DetailedViewComponents\SpecificHabitOverviewComponents\SpecificHabitOverviewDetails.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\MainPage\Components\DetailedViewComponents\SpecificHabitOverviewComponents\SpecificHabitOverviewDetailsSectionOne.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="Views\MainPage\Components\MainPageHabitOverviewComponents\HabitOverviewHabitView.xaml">

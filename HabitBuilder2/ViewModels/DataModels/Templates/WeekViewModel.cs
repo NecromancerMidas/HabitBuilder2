@@ -13,6 +13,8 @@ namespace HabitBuilder2.ViewModels.Templates
     public class WeekViewModel : INotifyPropertyChanged
     {
         private ObservableCollection<DayViewModel> _days;
+        public int ActiveHabits => _days.Count(d => d.Active);
+        public int CompletedHabits => _days.Count(d => d.Completed);
 
         public WeekViewModel(Week week)
         {

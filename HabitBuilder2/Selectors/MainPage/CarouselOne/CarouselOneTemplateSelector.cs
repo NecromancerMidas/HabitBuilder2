@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using HabitBuilder2.ViewModels.Templates;
+using HabitBuilder2.ViewModels.DataModels.Templates;
 
 
 namespace HabitBuilder2.Selectors.MainPage.CarouselOne

@@ -3,10 +3,11 @@ using HabitBuilder2.Models.Templates;
 using HabitBuilder2.Services;
 using HabitBuilder2.TempDB;
 using HabitBuilder2.ViewModels;
-using HabitBuilder2.ViewModels.Templates;
 using System.Collections.ObjectModel;
 using System.Diagnostics;
 using System.Reflection;
+using HabitBuilder2.ViewModels.DataModels.Templates;
+using HabitBuilder2.ViewModels.UiModels.MainPage;
 
 namespace HabitBuilder2;
 public partial class MainPage : ContentPage

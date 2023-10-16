@@ -4,7 +4,7 @@ using HabitBuilder2.Utilities.HabitBar.Converter;
 using System.ComponentModel;
 using System.Diagnostics;
 using HabitBuilder2.Models.Templates;
-using HabitBuilder2.ViewModels.Templates;
+using HabitBuilder2.ViewModels.DataModels.Templates;
 using Microsoft.Maui.Controls;
 
 namespace HabitBuilder2.Views.MainPage.Components.MainPageHabitOverviewComponents;

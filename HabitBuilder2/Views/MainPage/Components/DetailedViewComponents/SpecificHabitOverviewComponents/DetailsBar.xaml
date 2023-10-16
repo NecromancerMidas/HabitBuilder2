@@ -3,10 +3,13 @@
 <ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:converter="clr-namespace:HabitBuilder2.Utilities.HabitBar.Converter"
+             xmlns:components="clr-namespace:HabitBuilder2.ViewModels.MainPage.Components"
              x:Class="HabitBuilder2.Views.MainPage.Components.DetailedViewComponents.SpecificHabitOverviewComponents.DetailsBar">
+    <ContentView.BindingContext>
+        <components:DetailsBarViewModel/>
+    </ContentView.BindingContext>
     <VerticalStackLayout>
         <VerticalStackLayout.GestureRecognizers>
-            <TapGestureRecognizer Command="{Binding BarSelectedCommand}" NumberOfTapsRequired="1"/>
         </VerticalStackLayout.GestureRecognizers>
         <VerticalStackLayout.Resources>
             <ResourceDictionary>
@@ -62,8 +65,13 @@
                 </Border.StrokeShape>
                 <Grid>
                     <RoundRectangle x:Name="LoadingRectangle" WidthRequest="0" Background="{StaticResource BarLoadGradient}" CornerRadius="20" HorizontalOptions="Start"/>
-                    <Label Text="{Binding Level,StringFormat='Lvl.{0}'}" TextColor="Black" VerticalOptions="Center" Margin="8,0,0,0"></Label>
-                    <Label Text="{Binding ExperiencePoints,StringFormat='{0}/21'}" TextColor="Black" HorizontalOptions="End" VerticalOptions="Center" Margin="0,0,8,0"></Label>
+                    <Label TextColor="Black" VerticalOptions="Center" Margin="8,0,0,0">
+                        <Label.Text>
+                            <MultiBinding StringFormat="{}{0}/{1}">
+                                <Binding Path="Metric1"/>
+                                <Binding Path="Metric2"/>
+                            </MultiBinding></Label.Text>
+                    </Label>
                 </Grid>
             </Border>
         </Grid>

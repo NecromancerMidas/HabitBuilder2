@@ -1,4 +1,4 @@
-﻿using HabitBuilder2.ViewModels.Templates;
+﻿using HabitBuilder2.ViewModels.DataModels.Templates;
 
 namespace HabitBuilder2.Selectors.MainPage;
 
