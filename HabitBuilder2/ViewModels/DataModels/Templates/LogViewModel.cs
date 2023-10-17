@@ -2,7 +2,7 @@
 using System.Runtime.CompilerServices;
 using HabitBuilder2.Models.Templates;
 
-namespace HabitBuilder2.ViewModels.Templates;
+namespace HabitBuilder2.ViewModels.DataModels.Templates;
 
 public class LogViewModel : INotifyPropertyChanged
 {

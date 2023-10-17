@@ -1,13 +1,8 @@
-﻿using HabitBuilder2.Selectors.MainPage;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Linq;
+﻿using System.ComponentModel;
 using System.Runtime.CompilerServices;
-using System.Text;
-using System.Threading.Tasks;
+using HabitBuilder2.Selectors.MainPage;
 
-namespace HabitBuilder2.ViewModels
+namespace HabitBuilder2.ViewModels.UiModels.MainPage
 {
     internal class DetailedViewViewModel : INotifyPropertyChanged
     {

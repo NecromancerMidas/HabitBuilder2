@@ -1,15 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
+﻿using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Diagnostics;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using HabitBuilder2.Models.Templates;
 using HabitBuilder2.Services;
 
-namespace HabitBuilder2.ViewModels.Templates
+namespace HabitBuilder2.ViewModels.DataModels.Templates
 {
     public class TemplateViewModel : INotifyPropertyChanged
     {

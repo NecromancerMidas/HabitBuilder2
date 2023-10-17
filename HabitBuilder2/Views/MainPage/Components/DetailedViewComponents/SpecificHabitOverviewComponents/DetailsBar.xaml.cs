@@ -7,8 +7,8 @@ using System.Text;
 using System.Threading.Tasks;
 using HabitBuilder2.Models.Templates;
 using HabitBuilder2.Utilities.HabitBar.Converter;
-using HabitBuilder2.ViewModels.MainPage.Components;
-using HabitBuilder2.ViewModels.Templates;
+using HabitBuilder2.ViewModels.DataModels.Templates;
+using HabitBuilder2.ViewModels.UiModels.MainPage.Components;
 
 namespace HabitBuilder2.Views.MainPage.Components.DetailedViewComponents.SpecificHabitOverviewComponents;
 

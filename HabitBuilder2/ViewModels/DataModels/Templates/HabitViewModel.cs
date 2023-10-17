@@ -1,16 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
+﻿using System.Collections.ObjectModel;
 using System.ComponentModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Input;
 using HabitBuilder2.Models.Templates;
 using HabitBuilder2.Services;
 using Debug = System.Diagnostics.Debug;
 
-namespace HabitBuilder2.ViewModels.Templates
+namespace HabitBuilder2.ViewModels.DataModels.Templates
 {
     public class HabitViewModel : INotifyPropertyChanged, ISelectable
     {
@@ -34,7 +29,7 @@ namespace HabitBuilder2.ViewModels.Templates
         private DateTime? _createdAt;
         private DateTime? _updatedAt;
         private DateTime? _deletedAt;
-        public ICommand BarSelectedCommand { get; set; }
+        
 
         public HabitViewModel CloneWithViewType(ViewType viewType)
         {
@@ -55,7 +50,6 @@ namespace HabitBuilder2.ViewModels.Templates
             _createdAt = habitModel.CreatedAt;
             _updatedAt = habitModel.UpdatedAt;
             _deletedAt = habitModel.DeletedAt;
-            BarSelectedCommand = new Command(() => SetSelected(!Selected));
             _parent = parent;
             Carousel = new ObservableCollection<HabitViewModel>
             {
@@ -198,13 +192,13 @@ namespace HabitBuilder2.ViewModels.Templates
         // You can also have methods or commands to handle interactions specific to the ViewModel.
         
         
-        public void SetSelected(bool selected)
+        public void SetSelected()
         {
             
             Debug.WriteLine("tapped");
             Debug.WriteLine(Selected);
-            Selected = selected;
-            _parent.SelectedItem = this;
+            Selected = !Selected;
+            _parent.SelectedItem = this; //Change this to a function in the parent please.
             Debug.WriteLine(_parent.SelectedItem);
             Debug.WriteLine(Selected);
         }
