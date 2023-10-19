@@ -1,29 +1,27 @@
-﻿using System.ComponentModel;
+﻿using System.Collections.ObjectModel;
+using System.ComponentModel;
 using System.Runtime.CompilerServices;
+using HabitBuilder2.Models.Templates;
 using HabitBuilder2.ViewModels.DataModels.Templates;
 using HabitBuilder2.ViewModels.UiModels.MainPage.Components;
+using HabitBuilder2.ViewModels.ViewModelBase;
 
 namespace HabitBuilder2.ViewModels.UiModels.MainPage;
 
-public class HabitOverviewViewModel : INotifyPropertyChanged
+public class HabitOverviewViewModel : BaseViewModel
 {
-    public event PropertyChangedEventHandler PropertyChanged;
+    
 
 
-    public HabitViewModel Habit { get; set; }
-    public HabitOverviewHabitViewModel HabitOverviewHabitViewModel { get; set; }
+    public TemplateViewModel Template { get; set; }
+    public ObservableCollection<HabitOverviewHabitViewModel> HabitList { get; set; }
 
-
-    protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
+    public HabitOverviewViewModel(Template template)
     {
-        PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        Template = new TemplateViewModel(template);
+        HabitList = new ObservableCollection<HabitOverviewHabitViewModel>(template.HabitList.Select(h => new HabitOverviewHabitViewModel(h)));
+        
     }
 
-    protected bool SetField<T>(ref T field, T value, [CallerMemberName] string propertyName = null)
-    {
-        if (EqualityComparer<T>.Default.Equals(field, value)) return false;
-        field = value;
-        OnPropertyChanged(propertyName);
-        return true;
-    }
+    
 }

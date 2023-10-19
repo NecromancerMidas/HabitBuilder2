@@ -1,9 +1,10 @@
 ﻿using System.ComponentModel;
 using System.Runtime.CompilerServices;
+using HabitBuilder2.ViewModels.ViewModelBase;
 
 namespace HabitBuilder2.ViewModels.UiModels.MainPage.Components
 {
-    class DetailsBarViewModel : INotifyPropertyChanged
+    class DetailsBarViewModel : BaseViewModel
     {
         private string _title;
         private int _metric1 { get; set; }  // Can represent Level, CompletedThisWeek, etc.
@@ -22,8 +23,7 @@ namespace HabitBuilder2.ViewModels.UiModels.MainPage.Components
             }
         }
 
-        public event PropertyChangedEventHandler PropertyChanged;
-
+     
 
 
         public int Metric1
@@ -53,18 +53,5 @@ namespace HabitBuilder2.ViewModels.UiModels.MainPage.Components
             }
         }
 
-
-        protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
-        {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-        }
-
-        protected bool SetField<T>(ref T field, T value, [CallerMemberName] string propertyName = null)
-        {
-            if (EqualityComparer<T>.Default.Equals(field, value)) return false;
-            field = value;
-            OnPropertyChanged(propertyName);
-            return true;
-        }
     }
 }

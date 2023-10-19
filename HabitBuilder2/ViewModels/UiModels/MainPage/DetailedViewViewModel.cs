@@ -1,20 +1,18 @@
 ﻿using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using HabitBuilder2.Selectors.MainPage;
+using HabitBuilder2.ViewModels.ViewModelBase;
 
 namespace HabitBuilder2.ViewModels.UiModels.MainPage
 {
-    internal class DetailedViewViewModel : INotifyPropertyChanged
+    internal class DetailedViewViewModel : BaseViewModel
     {
         private View _dynamicContent;
         public View DynamicContent
         {
             get => _dynamicContent;
             set
-            {
-                _dynamicContent = value;
-                OnPropertyChanged(nameof(DynamicContent));
-            }
+            => SetField(ref _dynamicContent, value);
         }
         public DetailedViewTemplateSelector TemplateSelector { get; set; }
 
@@ -23,22 +21,14 @@ namespace HabitBuilder2.ViewModels.UiModels.MainPage
         public bool ShowDetailedTemplateView
         {
             get => _showDetailedTemplateView;
-            set
-            {
-                _showDetailedTemplateView = value;
-                OnPropertyChanged(nameof(ShowDetailedTemplateView));
-            }
+            set => SetField(ref _showDetailedTemplateView, value);
         }
 
         private bool _showSpecificHabitOverview;
         public bool ShowSpecificHabitOverview
         {
             get => _showSpecificHabitOverview;
-            set
-            {
-                _showSpecificHabitOverview = value;
-                OnPropertyChanged(nameof(ShowSpecificHabitOverview));
-            }
+            set => SetField(ref _showSpecificHabitOverview, value);
         }
 
 
@@ -70,19 +60,6 @@ namespace HabitBuilder2.ViewModels.UiModels.MainPage
             }
         }*/
 
-        public event PropertyChangedEventHandler PropertyChanged;
-
-        protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
-        {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-        }
-
-        protected bool SetField<T>(ref T field, T value, [CallerMemberName] string propertyName = null)
-        {
-            if (EqualityComparer<T>.Default.Equals(field, value)) return false;
-            field = value;
-            OnPropertyChanged(propertyName);
-            return true;
-        }
+        
     }
 }

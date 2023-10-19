@@ -10,7 +10,7 @@
                     SelectedItem="{Binding SelectedItem, Mode=TwoWay}">
         <CollectionView.Header>
                 <Label
-                    Text="{Binding Title}"
+                    Text="{Binding Template.Title}"
                        VerticalOptions="Start" 
                        HorizontalOptions="Center"/>
                 </CollectionView.Header>

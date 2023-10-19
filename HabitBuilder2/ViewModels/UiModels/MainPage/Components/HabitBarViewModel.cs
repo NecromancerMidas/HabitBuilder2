@@ -2,33 +2,29 @@
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
+using HabitBuilder2.ViewModels.ViewModelBase;
 
 namespace HabitBuilder2.ViewModels.UiModels.MainPage.Components
 {
-    public class HabitBarViewModel : INotifyPropertyChanged
+    public class HabitBarViewModel : BaseViewModel
     {
-        private HabitViewModel _habitViewModel;
+        public HabitViewModel Habit { get; set; }
         public ICommand BarSelectedCommand { get; set; }
         public HabitBarViewModel(HabitViewModel habitViewModel)
         {
-            _habitViewModel = habitViewModel;
-            BarSelectedCommand = new Command(() => _habitViewModel.SetSelected());
+            Habit = habitViewModel;
+            Debug.WriteLine(Habit.Title);
+            BarSelectedCommand = new Command(() => Habit.SetSelected());
         }
 
-        public string DisplayLevel => $"Lvl.{_habitViewModel.Level}";
-        public string DisplayExperience => $"{_habitViewModel.ExperiencePoints}/21";
+        public string DisplayLevel => $"Lvl.{Habit.Level}";
+        public string DisplayExperience => $"{Habit.ExperiencePoints}/21";
         // Add properties, methods, and commands specific to the HabitBar view
         // ...
-
-        public event PropertyChangedEventHandler PropertyChanged;
-
-        protected virtual void OnPropertyChanged(string propertyName)
-        {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-        }
     }
 }

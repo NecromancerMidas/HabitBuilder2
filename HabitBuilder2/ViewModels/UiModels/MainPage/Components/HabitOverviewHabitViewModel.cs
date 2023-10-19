@@ -1,27 +1,20 @@
 ﻿using System.ComponentModel;
 using System.Runtime.CompilerServices;
+using HabitBuilder2.Models.Templates;
 using HabitBuilder2.ViewModels.DataModels.Templates;
+using HabitBuilder2.ViewModels.ViewModelBase;
 
 namespace HabitBuilder2.ViewModels.UiModels.MainPage.Components;
 
-public class HabitOverviewHabitViewModel : INotifyPropertyChanged
+public class HabitOverviewHabitViewModel : BaseViewModel
 {
-    public event PropertyChangedEventHandler PropertyChanged;
-
     public HabitViewModel Habit { get; set; }
     public HabitBarViewModel HabitBar { get; set; }
     public StreakIndicatorViewModel StreakIndicator { get; set; }
-    
-    protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
+    public HabitOverviewHabitViewModel(Habit habit)
     {
-        PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-    }
-
-    protected bool SetField<T>(ref T field, T value, [CallerMemberName] string propertyName = null)
-    {
-        if (EqualityComparer<T>.Default.Equals(field, value)) return false;
-        field = value;
-        OnPropertyChanged(propertyName);
-        return true;
+        Habit = new HabitViewModel(habit,null);
+        HabitBar = new HabitBarViewModel(Habit);
+        StreakIndicator = new StreakIndicatorViewModel(Habit);
     }
 }

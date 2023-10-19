@@ -2,10 +2,11 @@
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using HabitBuilder2.Models.Templates;
+using HabitBuilder2.ViewModels.ViewModelBase;
 
 namespace HabitBuilder2.ViewModels.DataModels.Templates
 {
-    public class WeekViewModel : INotifyPropertyChanged
+    public class WeekViewModel : BaseViewModel
     {
         private ObservableCollection<DayViewModel> _days;
         public int ActiveHabits => _days.Count(d => d.Active);
@@ -15,30 +16,11 @@ namespace HabitBuilder2.ViewModels.DataModels.Templates
         {
             _days = new ObservableCollection<DayViewModel>(week.Days.Select(d => new DayViewModel(d)));
         }
+
         public ObservableCollection<DayViewModel> Days
         {
             get => _days;
-            set
-            {
-                if (Equals(value, _days)) return;
-                _days = value;
-                OnPropertyChanged();
-            }
-        }
-
-        public event PropertyChangedEventHandler PropertyChanged;
-
-        protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
-        {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-        }
-
-        protected bool SetField<T>(ref T field, T value, [CallerMemberName] string propertyName = null)
-        {
-            if (EqualityComparer<T>.Default.Equals(field, value)) return false;
-            field = value;
-            OnPropertyChanged(propertyName);
-            return true;
+            set => SetField(ref _days, value);
         }
     }
 }

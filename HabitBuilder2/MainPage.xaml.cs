@@ -40,7 +40,7 @@ public partial class MainPage : ContentPage
         Debug.WriteLine(BindingContext);
         Debug.WriteLine(ViewModel.Templates[0]);
         Debug.WriteLine(ViewModel.Templates[0].HabitList[0]);
-        Debug.WriteLine(ViewModel.Templates[0].HabitList[0].Description);
+        Debug.WriteLine(ViewModel.Templates[0].HabitList[0].Habit.Description);
         Debug.WriteLine($"{BindingContext.GetType().GetProperties().GetValue(0)}");
         InitializeComponent();
     }

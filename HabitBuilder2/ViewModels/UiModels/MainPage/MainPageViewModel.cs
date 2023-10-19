@@ -4,12 +4,14 @@ using System.Runtime.CompilerServices;
 using System.Windows.Input;
 using HabitBuilder2.Models;
 using HabitBuilder2.ViewModels.DataModels.Templates;
+using HabitBuilder2.ViewModels.ViewModelBase;
 
 namespace HabitBuilder2.ViewModels.UiModels.MainPage
 {
-    public class MainPageViewModel : INotifyPropertyChanged
+    public class MainPageViewModel : BaseViewModel
     {
-        private ObservableCollection<TemplateViewModel> _templates;
+        private ObservableCollection<HabitOverviewViewModel> _templates;
+
 
         private TemplateViewModel _selectedTemplate;
         public ICommand ItemChangedCommand { get; }
@@ -18,8 +20,10 @@ namespace HabitBuilder2.ViewModels.UiModels.MainPage
         {
             ItemChangedCommand = new Command<TemplateViewModel>(OnItemChanged);
             Templates =
-                new ObservableCollection<TemplateViewModel>(mainpage.Templates.Select(t => new TemplateViewModel(t)));
+                new ObservableCollection<HabitOverviewViewModel>(mainpage.Templates.Select(t => new HabitOverviewViewModel(t)));
+
         }
+
         private void OnItemChanged(TemplateViewModel newItem)
         {
             // Do something with the new item
@@ -27,43 +31,17 @@ namespace HabitBuilder2.ViewModels.UiModels.MainPage
             SelectedTemplate = newItem;
         }
 
-        public ObservableCollection<TemplateViewModel> Templates
+        public ObservableCollection<HabitOverviewViewModel> Templates
         {
             get => _templates;
-            set
-            {
-                _templates = value;
-                OnPropertyChanged();
-            }
+            set => SetField(ref _templates, value);
         }
 
         public TemplateViewModel SelectedTemplate
         {
             get => _selectedTemplate;
-            set
-            {
-                _selectedTemplate = value;
-                OnPropertyChanged();
-            }
-        }
-        public event PropertyChangedEventHandler PropertyChanged;
-
-        protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
-        {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-        }
-
-        protected bool SetField<T>(ref T field, T value, [CallerMemberName] string propertyName = null)
-        {
-            if (EqualityComparer<T>.Default.Equals(field, value)) return false;
-            field = value;
-            OnPropertyChanged(propertyName);
-            return true;
+            set => SetField(ref _selectedTemplate, value);
         }
     }
-
-    
-
-
 
 }

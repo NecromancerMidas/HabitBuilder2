@@ -1,10 +1,11 @@
 ﻿using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using HabitBuilder2.Models.Templates;
+using HabitBuilder2.ViewModels.ViewModelBase;
 
 namespace HabitBuilder2.ViewModels.DataModels.Templates;
 
-public class DayViewModel : INotifyPropertyChanged
+public class DayViewModel : BaseViewModel
 {
     private DateTime _date;
     private DayOfWeek _dayOfWeek;
@@ -28,100 +29,55 @@ public class DayViewModel : INotifyPropertyChanged
     public DateTime Date
     {
         get => _date;
-        set
-        {
-            if (value.Equals(_date)) return;
-            _date = value;
-            OnPropertyChanged();
-        }
+        set => SetField(ref _date, value);
     }
 
     public DayOfWeek DayOfWeek
     {
         get => _dayOfWeek;
-        set
-        {
-            if (value == _dayOfWeek) return;
-            _dayOfWeek = value;
-            OnPropertyChanged();
-        }
+        set => SetField(ref _dayOfWeek, value);
     }
 
     public bool Active
     {
         get => _active;
-        set
-        {
-            if (value == _active) return;
-            _active = value;
-            OnPropertyChanged();
-        }
+        set => SetField(ref _active, value);
     }
 
     public bool Completed
     {
         get => _completed;
         set
-        {
-            if (value == _completed) return;
-            _completed = value;
-            OnPropertyChanged();
-        }
+        => SetField(ref _completed, value);
     }
 
     public string Description
     {
         get => _description;
-        set
-        {
-            if (value == _description) return;
-            _description = value;
-            OnPropertyChanged();
-        }
+        set => SetField(ref _description, value);
     }
 
     public bool Reminder
     {
         get => _reminder;
-        set
-        {
-            if (value == _reminder) return;
-            _reminder = value;
-            OnPropertyChanged();
-        }
+        set => SetField(ref _reminder, value);
     }
 
     public TimeSpan Time
     {
         get => _time;
-        set
-        {
-            if (value.Equals(_time)) return;
-            _time = value;
-            OnPropertyChanged();
-        }
+        set => SetField(ref _time, value);
     }
 
     public LogViewModel Log
     {
         get => _log;
-        set
-        {
-            if (Equals(value, _log)) return;
-            _log = value;
-            OnPropertyChanged();
-        }
+        set => SetField(ref _log, value);
+
     }
 
    
 
-
-    public event PropertyChangedEventHandler PropertyChanged;
-
-    protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
-    {
-        PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-    }
 
     
 }

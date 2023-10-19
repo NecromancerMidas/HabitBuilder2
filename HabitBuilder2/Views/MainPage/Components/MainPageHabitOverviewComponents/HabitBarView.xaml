@@ -39,7 +39,8 @@
                     HorizontalOptions="Start" 
                     VerticalOptions="Start" 
                     FontSize="10" 
-                    Text="{Binding Title}"/>
+                    x:Name="HabitBarTitle"
+                    Text="{Binding Habit.Title}"/>
                     <Label 
                            FontSize="10"
                            HorizontalOptions="End"
@@ -64,8 +65,8 @@
                 <Grid>
                     <RoundRectangle x:Name="LoadingRectangle" WidthRequest="0" Background="{StaticResource BarLoadGradient}" CornerRadius="20" HorizontalOptions="Start"
                                     x:DataType="local:HabitBarView"/>
-                    <Label Text="{Binding Level,StringFormat='Lvl.{0}'}" TextColor="Black" VerticalOptions="Center" Margin="8,0,0,0"></Label>
-                    <Label Text="{Binding ExperiencePoints,StringFormat='{0}/21'}" TextColor="Black" HorizontalOptions="End" VerticalOptions="Center" Margin="0,0,8,0"></Label>
+                    <Label Text="{Binding DisplayLevel}" TextColor="Black" VerticalOptions="Center" Margin="8,0,0,0"></Label>
+                    <Label Text="{Binding DisplayExperience}" TextColor="Black" HorizontalOptions="End" VerticalOptions="Center" Margin="0,0,8,0"></Label>
                 </Grid>
             </Border>
         </Grid>

@@ -3,11 +3,12 @@ using System.ComponentModel;
 using System.Windows.Input;
 using HabitBuilder2.Models.Templates;
 using HabitBuilder2.Services;
+using HabitBuilder2.ViewModels.ViewModelBase;
 using Debug = System.Diagnostics.Debug;
 
 namespace HabitBuilder2.ViewModels.DataModels.Templates
 {
-    public class HabitViewModel : INotifyPropertyChanged, ISelectable
+    public class HabitViewModel : BaseViewModel, ISelectable
     {
         public enum ViewType
         {
@@ -62,133 +63,81 @@ namespace HabitBuilder2.ViewModels.DataModels.Templates
         {
             get => _status;
             set
-            {
-                if (value == _status) return;
-                _status = value;
-                OnPropertyChanged(nameof(Status));
-            }
+            => SetField(ref _status, value);
         }
 
         public string Title
         {
             get => _title;
             set
-            {
-                if (value == _title) return;
-                _title = value;
-                OnPropertyChanged(nameof(Title));
-            }
+            => SetField(ref _title, value);
         }
 
         public string Description
         {
             get => _description;
             set
-            {
-                if (value == _description) return;
-                _description = value;
-                OnPropertyChanged(nameof(Description));
-            }
+            => SetField(ref _description, value);
         }
 
         public Guid Guid
         {
             get => _guid;
-            set
-            {
-                if (value.Equals(_guid)) return;
-                _guid = value;
-                OnPropertyChanged(nameof(Guid));
-            }
+            set => SetField(ref _guid, value);
         }
 
         public int ExperiencePoints
         {
             get => _experiencePoints;
             set
-            {
-                if (value == _experiencePoints) return;
-                _experiencePoints = value;
-                OnPropertyChanged(nameof(ExperiencePoints));
-            }
+            => SetField(ref _experiencePoints, value);
         }
 
         public int Level
         {
             get => _level;
-            set
-            {
-                if (value == _level) return;
-                _level = value;
-                OnPropertyChanged(nameof(Level));
-            }
+            set => SetField(ref _level, value);
         }
 
         public WeekViewModel WeekDays
         {
             get => _weekDays;
-            set
-            {
-                if (Equals(value, _weekDays)) return;
-                _weekDays = value;
-                OnPropertyChanged(nameof(WeekDays));
-            }
+            set => SetField(ref _weekDays, value);
         }
 
         public DateTime? CreatedAt
         {
             get => _createdAt;
-            set
-            {
-                if (value.Equals(_createdAt)) return;
-                _createdAt = value;
-                OnPropertyChanged(nameof(CreatedAt));
-            }
+            set => SetField(ref _createdAt, value);
+
+
         }
 
         public DateTime? UpdatedAt
         {
             get => _updatedAt;
-            set
-            {
-                if (Nullable.Equals(value, _updatedAt)) return;
-                _updatedAt = value;
-                OnPropertyChanged(nameof(UpdatedAt));
-            }
+            set => SetField(ref _updatedAt, value);
         }
 
         public DateTime? DeletedAt
         {
             get => _deletedAt;
-            set
-            {
-                if (Nullable.Equals(value, _deletedAt)) return;
-                _deletedAt = value;
-                OnPropertyChanged(nameof(DeletedAt));
-            }
+            set => SetField(ref _deletedAt, value);
         }
 
         public bool Selected
         {
             get => _selected;
-            set
-            {
-                if (value == _selected) return;
-                _selected = value;
-                OnPropertyChanged(nameof(Selected));
-            }
+            set => SetField(ref _selected, value);
         }
-        
+
+        public void SetSelected(bool selected)
+        {
+            throw new NotImplementedException();
+        }
+
 
         // ... [Repeat for other properties like Title, Description, etc.]
-
-        public event PropertyChangedEventHandler PropertyChanged;
-
-        protected virtual void OnPropertyChanged(string propertyName)
-        {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-        }
-
         // You can also have methods or commands to handle interactions specific to the ViewModel.
         
         

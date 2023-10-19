@@ -3,10 +3,11 @@ using System.ComponentModel;
 using System.Diagnostics;
 using HabitBuilder2.Models.Templates;
 using HabitBuilder2.Services;
+using HabitBuilder2.ViewModels.ViewModelBase;
 
 namespace HabitBuilder2.ViewModels.DataModels.Templates
 {
-    public class TemplateViewModel : INotifyPropertyChanged
+    public class TemplateViewModel : BaseViewModel
     {
         public enum ViewType
         {
@@ -119,14 +120,7 @@ namespace HabitBuilder2.ViewModels.DataModels.Templates
             }
         }
 
-        public event PropertyChangedEventHandler PropertyChanged;
 
-        protected virtual void OnPropertyChanged(string propertyName)
-        {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-        }
-
-        
         // Additional commands or methods for UI interaction can be added here.
     }
 }

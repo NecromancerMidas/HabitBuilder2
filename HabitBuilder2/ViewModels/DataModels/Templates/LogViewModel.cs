@@ -1,10 +1,11 @@
 ﻿using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using HabitBuilder2.Models.Templates;
+using HabitBuilder2.ViewModels.ViewModelBase;
 
 namespace HabitBuilder2.ViewModels.DataModels.Templates;
 
-public class LogViewModel : INotifyPropertyChanged
+public class LogViewModel : BaseViewModel
 {
     private string _stateOfMind;
     private string _accomplish;
@@ -27,72 +28,30 @@ public class LogViewModel : INotifyPropertyChanged
     public string StateOfMind
     {
         get => _stateOfMind;
-        set
-        {
-            if (value == _stateOfMind) return;
-            _stateOfMind = value;
-            OnPropertyChanged();
-        }
+        set => SetField(ref _stateOfMind, value);
     }
 
     public string Accomplish
     {
         get => _accomplish;
-        set
-        {
-            if (value == _accomplish) return;
-            _accomplish = value;
-            OnPropertyChanged();
-        }
+        set => SetField(ref _accomplish, value);
     }
 
     public string Challenges
     {
         get => _challenges;
-        set
-        {
-            if (value == _challenges) return;
-            _challenges = value;
-            OnPropertyChanged();
-        }
+        set => SetField(ref _challenges, value);
     }
 
     public string Thoughts
     {
         get => _thoughts;
-        set
-        {
-            if (value == _thoughts) return;
-            _thoughts = value;
-            OnPropertyChanged();
-        }
+        set => SetField(ref _thoughts, value);
     }
 
     public DateTime? EntryDate
     {
         get => _entryDate;
-        set
-        {
-            if (value.Equals(_entryDate)) return;
-            _entryDate = value;
-            OnPropertyChanged();
-        }
-    }
-
- 
-
-    public event PropertyChangedEventHandler PropertyChanged;
-
-    protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
-    {
-        PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-    }
-
-    protected bool SetField<T>(ref T field, T value, [CallerMemberName] string propertyName = null)
-    {
-        if (EqualityComparer<T>.Default.Equals(field, value)) return false;
-        field = value;
-        OnPropertyChanged(propertyName);
-        return true;
+        set => SetField(ref _entryDate, value);
     }
 }
