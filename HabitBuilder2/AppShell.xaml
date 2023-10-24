@@ -31,10 +31,10 @@
 
 
     <TabBar>
-        <Tab Title="Home">
+        <Tab Title="Home" x:Name="Home">
             <ShellContent ContentTemplate="{DataTemplate local:MainPage}" Route="MainPage" />
         </Tab>
-        <Tab Title="Bomb">
+        <Tab Title="Bomb" x:Name="Bomb">
             <ShellContent ContentTemplate="{DataTemplate local:MainPage}" />
         </Tab>
     </TabBar>

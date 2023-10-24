@@ -1,11 +1,17 @@
-﻿namespace HabitBuilder2;
+﻿using Microsoft.Extensions.DependencyInjection;
+
+namespace HabitBuilder2;
 
 public partial class App : Application
 {
-	public App()
+	public App(IServiceProvider serviceProvider)
 	{
 		InitializeComponent();
 
-		MainPage = new AppShell();
-	}
+        
+        var appShell = serviceProvider.GetService<AppShell>();
+        MainPage = appShell;
+        // Initialize MainPage inside AppShell from serviceProvider
+/*        appShell.InitializeMainPage(serviceProvider);*/
+    }
 }

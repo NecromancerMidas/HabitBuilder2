@@ -3,6 +3,8 @@ using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using System.Windows.Input;
 using HabitBuilder2.Models;
+using HabitBuilder2.Services;
+using HabitBuilder2.Services.Factories;
 using HabitBuilder2.ViewModels.DataModels.Templates;
 using HabitBuilder2.ViewModels.ViewModelBase;
 
@@ -11,17 +13,18 @@ namespace HabitBuilder2.ViewModels.UiModels.MainPage
     public class MainPageViewModel : BaseViewModel
     {
         private ObservableCollection<HabitOverviewViewModel> _templates;
-
+        private readonly IViewModelFactory _viewModelFactory;
 
         private TemplateViewModel _selectedTemplate;
         public ICommand ItemChangedCommand { get; }
 
-        public MainPageViewModel(MainPageModel mainpage)
+        public MainPageViewModel(IDataService dataService, IViewModelFactory viewModelFactory)
         {
             ItemChangedCommand = new Command<TemplateViewModel>(OnItemChanged);
+            _viewModelFactory = viewModelFactory;
             Templates =
-                new ObservableCollection<HabitOverviewViewModel>(mainpage.Templates.Select(t => new HabitOverviewViewModel(t)));
-
+                new ObservableCollection<HabitOverviewViewModel>(dataService.GetTemplates().Select(t => new HabitOverviewViewModel(t,_viewModelFactory)));
+            
         }
 
         private void OnItemChanged(TemplateViewModel newItem)

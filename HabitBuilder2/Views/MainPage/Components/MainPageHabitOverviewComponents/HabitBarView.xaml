@@ -26,7 +26,8 @@
                     WidthRequest="154"
                     Margin="18,3,0,0" 
                     HorizontalOptions="Start" 
-                    VerticalOptions="Start">
+                    VerticalOptions="Start"
+                    BackgroundColor="{Binding StatusColor}">
                 <Border.StrokeShape>
                     <RoundRectangle CornerRadius="20"></RoundRectangle>
                 </Border.StrokeShape>
@@ -46,6 +47,7 @@
                            HorizontalOptions="End"
                            VerticalOptions="Start"
                            x:Name="Status"
+                           Text="{Binding StatusText}"
                            Margin="0,0,11,0"></Label>
                 </Grid>
             </Border>

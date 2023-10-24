@@ -33,7 +33,6 @@ public partial class HabitBarView : ContentView
     protected override void OnSizeAllocated(double width, double height)
     {
         base.OnSizeAllocated(width, height);
-        SetStatus();
         UpdateLoadingBarWidth();
         
     }
@@ -46,63 +45,25 @@ public partial class HabitBarView : ContentView
             notifyPropertyChanged.PropertyChanged += ViewModel_PropertyChanged;
         }
     }
+
     private void ViewModel_PropertyChanged(object sender, PropertyChangedEventArgs e)
     {
         if (e.PropertyName == "ExperiencePoints")
         {
             UpdateLoadingBarWidth();
         }
-
-        if (e.PropertyName == "Status" || e.PropertyName == "Selected")
-        { 
-            
-            SetStatus();
-        }
-        
     }
 
-   /* private void BarSelected(object sender, EventArgs e)
-    {
-        Debug.WriteLine("Tapped");
-        if (BindingContext is HabitViewModel viewModel)
-        {
-            viewModel.Status = HabitStatus.Selected;
-        }
-         
-    }*/
-    private void SetStatus()
-    {
-        if (BindingContext is HabitViewModel viewModel)
-        {
-            if (viewModel.Selected)
-            {
-                Status.Text = "Selected";
-                StatusColor.BackgroundColor = Color.FromArgb("#a403aa");
-                return;
-            }
-            switch (viewModel.Status)
-            {
-                case HabitStatus.InProgress:
-                    Status.Text = "In Progress";
-                    StatusColor.BackgroundColor = Color.FromArgb("#ff960f");
-                    break;
-                case HabitStatus.Frozen:
-                    Status.Text = "Frozen";
-                    StatusColor.BackgroundColor = Color.FromArgb("#3499FE");
-                    break;
-                case HabitStatus.Completed:
-                    Status.Text = "Completed";
-                    StatusColor.BackgroundColor = Color.FromArgb("#008000");
-                    break;
-                
-                default:
-                    Status.Text = "error";
-                    StatusColor.BackgroundColor = Color.FromArgb("#8000ff");
-                    break;
-            }
-        }
-
-    }
+    /* private void BarSelected(object sender, EventArgs e)
+     {
+         Debug.WriteLine("Tapped");
+         if (BindingContext is HabitViewModel viewModel)
+         {
+             viewModel.Status = HabitStatus.Selected;
+         }
+          
+     }*/
+    
 
 
     /*public string HabitTitle

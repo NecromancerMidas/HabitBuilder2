@@ -2,6 +2,7 @@
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using HabitBuilder2.Models.Templates;
+using HabitBuilder2.Services.Factories;
 using HabitBuilder2.ViewModels.DataModels.Templates;
 using HabitBuilder2.ViewModels.UiModels.MainPage.Components;
 using HabitBuilder2.ViewModels.ViewModelBase;
@@ -16,10 +17,10 @@ public class HabitOverviewViewModel : BaseViewModel
     public TemplateViewModel Template { get; set; }
     public ObservableCollection<HabitOverviewHabitViewModel> HabitList { get; set; }
 
-    public HabitOverviewViewModel(Template template)
+    public HabitOverviewViewModel(Template template, IViewModelFactory viewModelFactory)
     {
         Template = new TemplateViewModel(template);
-        HabitList = new ObservableCollection<HabitOverviewHabitViewModel>(template.HabitList.Select(h => new HabitOverviewHabitViewModel(h)));
+        HabitList = new ObservableCollection<HabitOverviewHabitViewModel>(template.HabitList.Select(h => new HabitOverviewHabitViewModel(h, viewModelFactory)));
         
     }
 

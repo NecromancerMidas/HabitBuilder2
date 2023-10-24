@@ -6,6 +6,7 @@ using HabitBuilder2.ViewModels;
 using System.Collections.ObjectModel;
 using System.Diagnostics;
 using System.Reflection;
+using HabitBuilder2.Services.Factories;
 using HabitBuilder2.ViewModels.DataModels.Templates;
 using HabitBuilder2.ViewModels.UiModels.MainPage;
 
@@ -15,7 +16,7 @@ public partial class MainPage : ContentPage
     public MainPageViewModel ViewModel;
     public TemplateViewModel ChildViewModel;
     public TemplateViewModel CarouselOneCurrentItem;
-    public MainPage()
+    public MainPage(IDataService dataService, IViewModelFactory viewModelFactory)
 	{
 
 
@@ -29,18 +30,15 @@ public partial class MainPage : ContentPage
 
         Debug.WriteLine(BindingContext);
         // Initialize model and ViewModel
-        IDataService dataService = new TempDbDataService();
+       /* IDataService dataService = new TempDbDataService();
         MainPageModel mainPageModel = new MainPageModel(dataService);
-        ViewModel = new MainPageViewModel(mainPageModel);
+        ViewModel = new MainPageViewModel(mainPageModel);*/
       
         // Set the BindingContext
-        BindingContext = ViewModel;
+        BindingContext = new MainPageViewModel(dataService,viewModelFactory);
         
         Debug.WriteLine(BindingContext);
         Debug.WriteLine(BindingContext);
-        Debug.WriteLine(ViewModel.Templates[0]);
-        Debug.WriteLine(ViewModel.Templates[0].HabitList[0]);
-        Debug.WriteLine(ViewModel.Templates[0].HabitList[0].Habit.Description);
         Debug.WriteLine($"{BindingContext.GetType().GetProperties().GetValue(0)}");
         InitializeComponent();
     }

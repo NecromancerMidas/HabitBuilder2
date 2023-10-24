@@ -57,6 +57,7 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <Folder Include="Services\Factories\" />
 	  <Folder Include="TempDB\Habits\" />
 	  <Folder Include="Utilities\MarkupExtensions\" />
 	  <Folder Include="Views\MainPage\Components\DetailedViewComponents\DetailedTemplateViewComponents\" />
