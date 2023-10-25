@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace HabitBuilder2.Services.EventAggregatorArgs
 {
-    public class SelectionEventArgs
+    public class SelectionEventArgs : EventArgs
     {
 
         public string Origin { get; set; }

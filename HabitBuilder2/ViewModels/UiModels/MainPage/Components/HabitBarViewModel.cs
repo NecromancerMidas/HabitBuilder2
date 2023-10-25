@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Input;
 using HabitBuilder2.Models.Templates;
 using HabitBuilder2.Services;
+using HabitBuilder2.Services.EventAggregatorArgs;
 using HabitBuilder2.ViewModels.ViewModelBase;
 
 namespace HabitBuilder2.ViewModels.UiModels.MainPage.Components
@@ -16,6 +17,7 @@ namespace HabitBuilder2.ViewModels.UiModels.MainPage.Components
     public class HabitBarViewModel : BaseViewModel
     {
         public HabitViewModel Habit { get; set; }
+        private EventAggregator _eventAggregator;
         public ICommand BarSelectedCommand { get; set; }
         private Color _statusColor;
         private string _statusText;
@@ -23,6 +25,7 @@ namespace HabitBuilder2.ViewModels.UiModels.MainPage.Components
         public HabitBarViewModel(HabitViewModel habitViewModel, EventAggregator eventAggregator)
         {
             Habit = habitViewModel;
+            _eventAggregator = eventAggregator;
             Debug.WriteLine(Habit.Title);
             BarSelectedCommand = new Command(() => SetSelected());
             SetStatus();
@@ -47,8 +50,23 @@ namespace HabitBuilder2.ViewModels.UiModels.MainPage.Components
         {
             Selected = !Selected;
             SetStatus();
+            if (Selected)
+            {
+                _eventAggregator.SelectedItem += SelectedEventHandler;
+            }
+            else
+            {
+                _eventAggregator.SelectedItem -= SelectedEventHandler;
+            }
         }
 
+        public void SelectedEventHandler(object sender,SelectionEventArgs e)
+        {
+            if (e.Origin == "HabitBar" && e.Item == this)
+            {
+                SetSelected();
+            }
+        }
         public void SetStatus()
         {
             if (Selected)
