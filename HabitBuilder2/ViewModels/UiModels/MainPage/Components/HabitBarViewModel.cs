@@ -52,6 +52,7 @@ namespace HabitBuilder2.ViewModels.UiModels.MainPage.Components
             SetStatus();
             if (Selected)
             {
+                _eventAggregator.SelectItem("HabitBar",this);
                 _eventAggregator.SelectedItem += SelectedEventHandler;
             }
             else
@@ -62,7 +63,7 @@ namespace HabitBuilder2.ViewModels.UiModels.MainPage.Components
 
         public void SelectedEventHandler(object sender,SelectionEventArgs e)
         {
-            if (e.Origin == "HabitBar" && e.Item == this)
+            if (e.Origin == "HabitBar" && e.Item != this)
             {
                 SetSelected();
             }

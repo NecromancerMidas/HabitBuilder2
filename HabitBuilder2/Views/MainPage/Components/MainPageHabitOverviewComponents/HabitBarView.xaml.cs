@@ -36,6 +36,7 @@ public partial class HabitBarView : ContentView
         UpdateLoadingBarWidth();
         
     }
+    
     protected override void OnBindingContextChanged()
     {
         base.OnBindingContextChanged();
