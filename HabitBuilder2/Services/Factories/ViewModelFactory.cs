@@ -8,10 +8,12 @@ public class ViewModelFactory : IViewModelFactory
 {
     
         private readonly EventAggregator _eventAggregator;
+        private readonly IDataServiceFactory _dataServiceFactory;
 
-        public ViewModelFactory(EventAggregator eventAggregator)
+        public ViewModelFactory(EventAggregator eventAggregator, IDataServiceFactory dataServiceFactory)
         {
             _eventAggregator = eventAggregator;
+            _dataServiceFactory = dataServiceFactory;
         }
 
         public T CreateViewModel<T>() where T : BaseViewModel

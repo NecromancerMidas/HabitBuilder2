@@ -1,9 +1,12 @@
 ﻿using System.Collections.ObjectModel;
 using System.ComponentModel;
+using System.Data;
 using System.Windows.Input;
+using Android.Provider;
 using HabitBuilder2.Models.Templates;
 using HabitBuilder2.Services;
 using HabitBuilder2.ViewModels.ViewModelBase;
+using Kotlin.Ranges;
 using Debug = System.Diagnostics.Debug;
 
 namespace HabitBuilder2.ViewModels.DataModels.Templates
@@ -16,6 +19,9 @@ namespace HabitBuilder2.ViewModels.DataModels.Templates
             SomethingElse
         }
 
+        private bool _inProgress;
+        private bool _isFrozen;
+        private bool _isCompleted;
         public ViewType CurrentView;
         public ObservableCollection<HabitViewModel> Carousel { get; set; }
         private TemplateViewModel _parent { get; set; }
@@ -58,6 +64,19 @@ namespace HabitBuilder2.ViewModels.DataModels.Templates
                 CloneWithViewType(ViewType.SomethingElse),
             };
         }
+
+        public bool InProgress
+        {
+            get => _inProgress;
+            set
+            {
+                SetField(ref _inProgress, value);
+                HabitStatusUpdate();
+            }
+
+        }
+
+        
 
         public HabitStatus Status
         {
@@ -150,6 +169,10 @@ namespace HabitBuilder2.ViewModels.DataModels.Templates
             _parent.SelectedItem = this; //Change this to a function in the parent please.
             Debug.WriteLine(_parent.SelectedItem);
             Debug.WriteLine(Selected);
+        }
+        private void HabitStatusUpdate()
+        {
+            throw new NotImplementedException();
         }
     }
 }

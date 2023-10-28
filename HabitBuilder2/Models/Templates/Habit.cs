@@ -14,6 +14,9 @@ public enum HabitStatus
 }
 public class Habit
 {
+    public bool InProgress { get; set; }
+    public bool IsFrozen { get; set; }
+    public bool IsCompleted { get; set; }
     public HabitStatus Status { get; set; }
     public string Title { get; set; }
     public string Description { get; set; }

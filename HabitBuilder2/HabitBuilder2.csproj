@@ -57,6 +57,7 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <Folder Include="Repositories\" />
 	  <Folder Include="Services\Factories\" />
 	  <Folder Include="TempDB\Habits\" />
 	  <Folder Include="Utilities\MarkupExtensions\" />

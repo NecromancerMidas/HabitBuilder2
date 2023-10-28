@@ -4,8 +4,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using HabitBuilder2.Models.Templates;
-using HabitBuilder2.Services;
-
 
 namespace HabitBuilder2.Models
 {

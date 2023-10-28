@@ -1,11 +1,11 @@
 using System.Globalization;
 using Microsoft.Maui.Controls.Shapes;
-using HabitBuilder2.Utilities.HabitBar.Converter;
 using System.ComponentModel;
 using System.Diagnostics;
 using HabitBuilder2.Models.Templates;
 using HabitBuilder2.ViewModels.DataModels.Templates;
 using Microsoft.Maui.Controls;
+using HabitBuilder2.Utilities.Converter.HabitBar;
 
 namespace HabitBuilder2.Views.MainPage.Components.MainPageHabitOverviewComponents;
 

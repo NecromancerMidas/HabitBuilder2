@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using HabitBuilder2.Models.Templates;
-using HabitBuilder2.Utilities.HabitBar.Converter;
+using HabitBuilder2.Utilities.Converter.HabitBar;
 using HabitBuilder2.ViewModels.DataModels.Templates;
 using HabitBuilder2.ViewModels.UiModels.MainPage.Components;
 

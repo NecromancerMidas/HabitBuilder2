@@ -2,7 +2,7 @@
 <ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:local="using:HabitBuilder2.Views.MainPage.Components.MainPageHabitOverviewComponents"
-             xmlns:local2="clr-namespace:HabitBuilder2.Utilities.HabitBar.Converter"
+             xmlns:habitBar="clr-namespace:HabitBuilder2.Utilities.Converter.HabitBar"
              x:Class="HabitBuilder2.Views.MainPage.Components.MainPageHabitOverviewComponents.HabitBarView">
     
     <VerticalStackLayout>
@@ -14,7 +14,8 @@
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="../../../../Resources/Styles/MainPage/Components/MainPageHabitOverviewComponents/HabitBar/BarGradient.xaml"></ResourceDictionary>
                     <ResourceDictionary>
-                        <local2:HabitBarWidthConverter x:Key="BarWidthConverter"/>
+                        <habitBar:StatusConverter x:Key="StatusConverter"/>
+                        <habitBar:HabitBarWidthConverter x:Key="BarWidthConverter"/>
                     </ResourceDictionary>
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
@@ -27,7 +28,7 @@
                     Margin="18,3,0,0" 
                     HorizontalOptions="Start" 
                     VerticalOptions="Start"
-                    BackgroundColor="{Binding StatusColor}">
+                    BackgroundColor="{Binding Habit.Status,Converter={StaticResource StatusConverter}, ConverterParameter='Color'}">
                 <Border.StrokeShape>
                     <RoundRectangle CornerRadius="20"></RoundRectangle>
                 </Border.StrokeShape>
@@ -47,7 +48,7 @@
                            HorizontalOptions="End"
                            VerticalOptions="Start"
                            x:Name="Status"
-                           Text="{Binding StatusText}"
+                           Text="{Binding Habit.Status,Converter={StaticResource StatusConverter}, ConverterParameter='Text'}"
                            Margin="0,0,11,0"></Label>
                 </Grid>
             </Border>

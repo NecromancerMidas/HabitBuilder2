@@ -4,9 +4,8 @@ using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using HabitBuilder2.Utilities.HabitBar.Converter;
 
-namespace HabitBuilder2.Utilities.HabitBar.Converter
+namespace HabitBuilder2.Utilities.Converter.HabitBar
 {
     class HabitBarWidthConverter : IValueConverter
     {
@@ -14,14 +13,14 @@ namespace HabitBuilder2.Utilities.HabitBar.Converter
         {
             if (value is int progress)
             {
-                
+
                 /*return (progress / 21 ) * 20;*/
                 return (double)progress;
             }
             if (value is string strValue && int.TryParse(strValue, out int result))
             {
-               /*return (result / 21 ) * 20;*/
-               return (double)result;
+                /*return (result / 21 ) * 20;*/
+                return (double)result;
             }
 
             return 10;
