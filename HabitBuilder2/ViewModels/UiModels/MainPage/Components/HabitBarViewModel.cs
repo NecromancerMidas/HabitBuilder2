@@ -28,7 +28,6 @@ namespace HabitBuilder2.ViewModels.UiModels.MainPage.Components
             _eventAggregator = eventAggregator;
             Debug.WriteLine(Habit.Title);
             BarSelectedCommand = new Command(() => SetSelected());
-            SetStatus();
         }
 
         public Color StatusColor
@@ -49,14 +48,16 @@ namespace HabitBuilder2.ViewModels.UiModels.MainPage.Components
         public void SetSelected()
         {
             Selected = !Selected;
-            SetStatus();
+            
             if (Selected)
             {
+                Habit.SetStatus(Selected);
                 _eventAggregator.SelectItem("HabitBar",this);
                 _eventAggregator.SelectedItem += SelectedEventHandler;
             }
             else
             {
+                Habit.SetStatus(Selected);
                 _eventAggregator.SelectedItem -= SelectedEventHandler;
             }
         }
@@ -68,7 +69,7 @@ namespace HabitBuilder2.ViewModels.UiModels.MainPage.Components
                 SetSelected();
             }
         }
-        public void SetStatus()
+       /* public void SetStatus()
         {
             if (Selected)
             {
@@ -95,7 +96,7 @@ namespace HabitBuilder2.ViewModels.UiModels.MainPage.Components
                     StatusColor = Color.FromArgb("#8000ff");
                     break;
             }
-            }
+            }*/
 
         }
     }

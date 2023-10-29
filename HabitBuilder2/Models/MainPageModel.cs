@@ -10,12 +10,12 @@ namespace HabitBuilder2.Models
     public class MainPageModel
     {
         
-        public List<Template> Templates { get; set; }
+     /*   public List<Template> Templates { get; set; }
         public MainPageModel(IDataService dataService)
         {
             Templates = dataService.GetTemplates();
         }
         
-
+*/
     }
 }

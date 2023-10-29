@@ -68,7 +68,7 @@ public partial class DetailsBar : ContentView
             viewModel.Title = (string)newValue;
         }
     }
-    protected override void OnSizeAllocated(double width, double height)
+   /* protected override void OnSizeAllocated(double width, double height)
     {
         base.OnSizeAllocated(width, height);
         SetStatus();
@@ -97,7 +97,7 @@ public partial class DetailsBar : ContentView
             SetStatus();
         }
 
-    }
+    }*/
 
     /* private void BarSelected(object sender, EventArgs e)
      {
@@ -108,7 +108,7 @@ public partial class DetailsBar : ContentView
          }
 
      }*/
-    private void SetStatus()
+    /*private void SetStatus()
     {
         if (BindingContext is HabitViewModel viewModel)
         {
@@ -140,7 +140,7 @@ public partial class DetailsBar : ContentView
             }
         }
 
-    }
+    }*/
 
 
     /*public string HabitTitle

@@ -1,5 +1,6 @@
 ﻿using HabitBuilder2.Models.Templates;
 using HabitBuilder2.Repositories;
+using HabitBuilder2.Services.DataService;
 using HabitBuilder2.TempDB;
 
 namespace HabitBuilder2.Services.Factories;
@@ -8,11 +9,12 @@ public class DataServiceFactory : IDataServiceFactory
 {
     
     private readonly IRepository<Template>_templateRepository;
-
-    public DataServiceFactory(/*IHabitRepository habitRepository,*/ IRepository<Template> templateRepository)
+    private readonly IHabitDataService<Habit> _habitDataService;
+    private readonly IGenericDataService<Template> _templateDataservice;
+    public DataServiceFactory(IHabitDataService<Habit> HabitDataService, IGenericDataService<Template> templateDataService)
     {
-       /* _habitRepository = habitRepository;*/
-        _templateRepository = templateRepository;
+        _habitDataService = HabitDataService;
+        _templateDataservice = templateDataService;
     }
 
     public IDataService<T> CreateDataService<T>(string serviceType)
@@ -20,14 +22,10 @@ public class DataServiceFactory : IDataServiceFactory
         
             switch (serviceType)
             {
-                case "WithHabits":
-                    return new DataServiceWithHabits(_habitRepository, _templateRepository);
-                case "WithoutHabits":
-                    return new DataServiceWithoutHabits(_templateRepository);
                 case "Generic Template":
-                    return (IDataService<T>) new TempDbDataService<Template>(_templateRepository);
+                    return (IDataService<T>)_templateDataservice;
             case "Generic Habit" :
-                return (IDataService<T>) new TempDbDataService<Habit>();
+                return (IDataService<T>)_habitDataService;
                 // Use your generic service here
                 default:
                     throw new ArgumentException("Invalid service type specified", nameof(serviceType));

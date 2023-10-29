@@ -2,11 +2,9 @@
 using System.ComponentModel;
 using System.Data;
 using System.Windows.Input;
-using Android.Provider;
 using HabitBuilder2.Models.Templates;
 using HabitBuilder2.Services;
 using HabitBuilder2.ViewModels.ViewModelBase;
-using Kotlin.Ranges;
 using Debug = System.Diagnostics.Debug;
 
 namespace HabitBuilder2.ViewModels.DataModels.Templates
@@ -17,6 +15,15 @@ namespace HabitBuilder2.ViewModels.DataModels.Templates
         {
             SpecificHabitOverviewDetails,
             SomethingElse
+        }
+        public enum HabitStatus
+        {
+            NotStarted,
+            InProgress,
+            Selected,
+            Frozen,
+            Completed,
+            Paused,
         }
 
         private bool _inProgress;
@@ -47,7 +54,9 @@ namespace HabitBuilder2.ViewModels.DataModels.Templates
         public HabitViewModel(Habit habitModel, TemplateViewModel parent)
         {
             _selected = false;
-            _status = habitModel.Status;
+            _inProgress = habitModel.InProgress;
+            _isFrozen = habitModel.IsFrozen;
+            _isCompleted = habitModel.IsCompleted;
             _title = habitModel.Title;
             _description = habitModel.Description;
             _guid = habitModel.Guid;
@@ -58,11 +67,28 @@ namespace HabitBuilder2.ViewModels.DataModels.Templates
             _updatedAt = habitModel.UpdatedAt;
             _deletedAt = habitModel.DeletedAt;
             _parent = parent;
+            SetStatus();
             Carousel = new ObservableCollection<HabitViewModel>
             {
                 CloneWithViewType(ViewType.SpecificHabitOverviewDetails),
                 CloneWithViewType(ViewType.SomethingElse),
             };
+        }
+
+        private void SetStatus()
+        {
+            if (_isFrozen)
+            {
+                Status = HabitStatus.Frozen;
+            }
+            else if (_isCompleted)
+            {
+                Status = HabitStatus.Completed;
+            }
+            else
+            {
+                Status = HabitStatus.InProgress;
+            }
         }
 
         public bool InProgress
@@ -76,6 +102,17 @@ namespace HabitBuilder2.ViewModels.DataModels.Templates
 
         }
 
+        public void SetStatus(bool selected)
+        {
+            if (selected)
+            {
+                Status = HabitStatus.Selected;
+            }
+            else
+            {
+                SetStatus();
+            }
+        }
         
 
         public HabitStatus Status

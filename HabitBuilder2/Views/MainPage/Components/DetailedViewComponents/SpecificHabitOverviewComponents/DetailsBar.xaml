@@ -2,8 +2,8 @@
 
 <ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:converter="clr-namespace:HabitBuilder2.Utilities.HabitBar.Converter"
              xmlns:components="clr-namespace:HabitBuilder2.ViewModels.UiModels.MainPage.Components"
+             xmlns:habitBar="clr-namespace:HabitBuilder2.Utilities.Converter.HabitBar"
              x:Class="HabitBuilder2.Views.MainPage.Components.DetailedViewComponents.SpecificHabitOverviewComponents.DetailsBar">
     <ContentView.BindingContext>
         <components:DetailsBarViewModel/>
@@ -16,7 +16,7 @@
                 <ResourceDictionary.MergedDictionaries>
                     <ResourceDictionary Source="/Resources/Styles/MainPage/Components/MainPageHabitOverviewComponents/HabitBar/BarGradient.xaml"></ResourceDictionary>
                     <ResourceDictionary>
-                        <converter:HabitBarWidthConverter x:Key="BarWidthConverter"/>
+                        <habitBar:HabitBarWidthConverter x:Key="BarWidthConverter"/>
                     </ResourceDictionary>
                 </ResourceDictionary.MergedDictionaries>
             </ResourceDictionary>

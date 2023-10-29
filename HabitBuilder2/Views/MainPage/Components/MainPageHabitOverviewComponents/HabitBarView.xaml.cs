@@ -6,6 +6,7 @@ using HabitBuilder2.Models.Templates;
 using HabitBuilder2.ViewModels.DataModels.Templates;
 using Microsoft.Maui.Controls;
 using HabitBuilder2.Utilities.Converter.HabitBar;
+using HabitBuilder2.ViewModels.UiModels.MainPage.Components;
 
 namespace HabitBuilder2.Views.MainPage.Components.MainPageHabitOverviewComponents;
 
@@ -37,7 +38,7 @@ public partial class HabitBarView : ContentView
         
     }
 
-    
+    /*
     protected override void OnBindingContextChanged()
     {
         base.OnBindingContextChanged();
@@ -54,7 +55,7 @@ public partial class HabitBarView : ContentView
         {
             UpdateLoadingBarWidth();
         }
-    }
+    }*/
 
     /* private void BarSelected(object sender, EventArgs e)
      {
@@ -96,10 +97,10 @@ public partial class HabitBarView : ContentView
   */
     public void UpdateLoadingBarWidth()
     {
-        if (BindingContext is HabitViewModel viewModel)
+        if (BindingContext is HabitBarViewModel viewModel)
         {
 
-            var converterValue = _converter.Convert(viewModel.ExperiencePoints, typeof(double), null, CultureInfo.CurrentCulture);
+            var converterValue = _converter.Convert(viewModel.Habit.ExperiencePoints, typeof(double), null, CultureInfo.CurrentCulture);
             if (converterValue is double value)
             {
                 var width = (150 / 21) * value;

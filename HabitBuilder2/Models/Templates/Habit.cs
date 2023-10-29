@@ -4,20 +4,12 @@ using HabitBuilder2.Models.Templates;
 
 
 namespace HabitBuilder2.Models.Templates;
-public enum HabitStatus
-{
-    NotStarted,
-    InProgress,
-    Frozen,
-    Completed,
-    Paused,
-}
+
 public class Habit
 {
     public bool InProgress { get; set; }
     public bool IsFrozen { get; set; }
     public bool IsCompleted { get; set; }
-    public HabitStatus Status { get; set; }
     public string Title { get; set; }
     public string Description { get; set; }
     public Guid Guid { get; set; }

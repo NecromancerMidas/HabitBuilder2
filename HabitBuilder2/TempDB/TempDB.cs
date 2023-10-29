@@ -26,7 +26,9 @@ namespace HabitBuilder2.TempDB
                 ExperiencePoints = 20,
                 Guid = new Guid(),
                 Level = 4,
-                Status = HabitStatus.Completed,
+                IsCompleted = true,
+                IsFrozen = false,
+                InProgress = true,
                 UpdatedAt = null,
             };
 
@@ -40,7 +42,9 @@ namespace HabitBuilder2.TempDB
                 ExperiencePoints = 10,
                 Guid = new Guid(),
                 Level = 2,
-                Status = HabitStatus.InProgress,
+                IsCompleted = false,
+                IsFrozen = false,
+                InProgress = true,
                 UpdatedAt = null,
             };
             var habit3 = new Habit
@@ -53,7 +57,9 @@ namespace HabitBuilder2.TempDB
                 ExperiencePoints = 4,
                 Guid = new Guid(),
                 Level = 8,
-                Status = HabitStatus.Frozen,
+                IsCompleted = false,
+                IsFrozen = true,
+                InProgress = true,
                 UpdatedAt = null,
             };
             var habit4 = new Habit
@@ -70,7 +76,9 @@ namespace HabitBuilder2.TempDB
                 ExperiencePoints = 14,
                 Guid = new Guid(),
                 Level =5,
-                Status = HabitStatus.InProgress,
+                IsCompleted = false,
+                IsFrozen = true,
+                InProgress = true,
                 UpdatedAt = null,
             };
 

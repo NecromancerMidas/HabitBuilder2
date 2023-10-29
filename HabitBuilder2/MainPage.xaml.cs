@@ -6,6 +6,7 @@ using HabitBuilder2.ViewModels;
 using System.Collections.ObjectModel;
 using System.Diagnostics;
 using System.Reflection;
+using HabitBuilder2.Services.DataService;
 using HabitBuilder2.Services.Factories;
 using HabitBuilder2.ViewModels.DataModels.Templates;
 using HabitBuilder2.ViewModels.UiModels.MainPage;
@@ -17,7 +18,7 @@ public partial class MainPage : ContentPage
     public TemplateViewModel ChildViewModel;
     public TemplateViewModel CarouselOneCurrentItem;
     private EventAggregator _eventAggregator;
-    public MainPage(IDataService dataService, IViewModelFactory viewModelFactory, EventAggregator eventAggregator)
+    public MainPage(IGenericDataService<Template> dataService,IViewModelFactory viewModelFactory, EventAggregator eventAggregator)
 	{
         
 

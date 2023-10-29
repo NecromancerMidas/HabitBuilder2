@@ -1,5 +1,8 @@
 ﻿
+using HabitBuilder2.Models.Templates;
+using HabitBuilder2.Repositories;
 using HabitBuilder2.Services;
+using HabitBuilder2.Services.DataService;
 using HabitBuilder2.Services.Factories;
 using HabitBuilder2.TempDB;
 using Microsoft.Extensions.Logging;
@@ -20,7 +23,10 @@ public static class MauiProgram
             })
             .Services
             .AddSingleton<EventAggregator>()
-            .AddSingleton<IDataService, TempDbDataService>()
+            .AddSingleton<IRepository<Template>,TemplateRepository>()
+            .AddSingleton<IHabitDataService<Habit>, HabitDataService<Habit>>()
+            .AddSingleton<IGenericDataService<Template>,GenericDataService<Template>>()
+            .AddSingleton<IDataServiceFactory, DataServiceFactory>()
             .AddSingleton<IViewModelFactory, ViewModelFactory>()
             .AddSingleton<AppShell>()
             .AddSingleton<MainPage>();
