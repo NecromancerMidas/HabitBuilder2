@@ -32,7 +32,7 @@ public partial class MainPage : ContentPage
         ViewModel = new MainPageViewModel(mainPageModel);*/
       
         // Set the BindingContext
-        BindingContext = new MainPageViewModel(dataService,viewModelFactory);
+        BindingContext = new MainPageViewModel(dataService,viewModelFactory,eventAggregator);
         _eventAggregator = eventAggregator;
         Debug.WriteLine(BindingContext);
         Debug.WriteLine(BindingContext);

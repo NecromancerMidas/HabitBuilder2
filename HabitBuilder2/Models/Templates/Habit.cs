@@ -14,6 +14,7 @@ public class Habit
     public string Description { get; set; }
     public Guid Guid { get; set; }
     public int ExperiencePoints { get; set; }
+    public int TotalStreak { get; set; }
     public int Level { get; set; }
     public Week WeekDays { get; set; }
     public DateTime? CreatedAt { get; set; }

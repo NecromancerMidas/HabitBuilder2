@@ -4,6 +4,7 @@ using System.Runtime.CompilerServices;
 using System.Windows.Input;
 using HabitBuilder2.Models;
 using HabitBuilder2.Models.Templates;
+using HabitBuilder2.Services;
 using HabitBuilder2.Services.DataService;
 using HabitBuilder2.Services.Factories;
 using HabitBuilder2.ViewModels.DataModels.Templates;
@@ -16,14 +17,20 @@ namespace HabitBuilder2.ViewModels.UiModels.MainPage
         private ObservableCollection<HabitOverviewViewModel> _templates;
         private readonly IViewModelFactory _viewModelFactory;
         private TemplateViewModel _selectedTemplate;
+        private DetailedViewViewModel _childDetailedViewViewModel;
+        private EventAggregator _eventAggregator;
         public ICommand ItemChangedCommand { get; }
 
-        public MainPageViewModel(IGenericDataService<Template> dataService, IViewModelFactory viewModelFactory)
+        public MainPageViewModel(IGenericDataService<Template> dataService, IViewModelFactory viewModelFactory,EventAggregator aggregator)
         {
-            ItemChangedCommand = new Command<TemplateViewModel>(OnItemChanged);
             _viewModelFactory = viewModelFactory;
             Templates =
-                new ObservableCollection<HabitOverviewViewModel>(dataService.GetAll().Select(t => new HabitOverviewViewModel(t,_viewModelFactory)));
+                new ObservableCollection<HabitOverviewViewModel>(dataService.GetAll().Select(t => new HabitOverviewViewModel(t, _viewModelFactory)));
+            ItemChangedCommand = new Command<TemplateViewModel>(OnItemChanged);
+            
+            _childDetailedViewViewModel = _viewModelFactory.CreateViewModel<DetailedViewViewModel>();
+            _eventAggregator = aggregator;
+            
             
         }
 
@@ -34,6 +41,11 @@ namespace HabitBuilder2.ViewModels.UiModels.MainPage
             SelectedTemplate = newItem;
         }
 
+        public DetailedViewViewModel ChildDetailedViewViewModel
+        {
+            get => _childDetailedViewViewModel;
+            set => SetField(ref _childDetailedViewViewModel, value);
+        }
         public ObservableCollection<HabitOverviewViewModel> Templates
         {
             get => _templates;

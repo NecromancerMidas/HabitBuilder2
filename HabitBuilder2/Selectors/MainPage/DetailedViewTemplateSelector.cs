@@ -7,7 +7,7 @@ using HabitBuilder2.ViewModels.DataModels.Templates;
 
 namespace HabitBuilder2.Selectors.MainPage
 {
-    internal class DetailedViewTemplateSelector : DataTemplateSelector
+    public class DetailedViewTemplateSelector : DataTemplateSelector
     {
         public DataTemplate DetailedTemplateView { get; set; }
         public DataTemplate SpecificHabitOverview { get; set; }

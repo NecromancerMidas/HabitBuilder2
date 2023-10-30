@@ -23,6 +23,7 @@ namespace HabitBuilder2.TempDB
                 WeekDays = new Week(), // This will initialize 7 days
                 CreatedAt = DateTime.Now,
                 DeletedAt = null,
+                TotalStreak = 83,
                 ExperiencePoints = 20,
                 Guid = new Guid(),
                 Level = 4,
@@ -39,6 +40,7 @@ namespace HabitBuilder2.TempDB
                 WeekDays = new Week(), // This will initialize 7 days
                 CreatedAt = DateTime.Now,
                 DeletedAt = null,
+                TotalStreak = 4,
                 ExperiencePoints = 10,
                 Guid = new Guid(),
                 Level = 2,
@@ -55,10 +57,11 @@ namespace HabitBuilder2.TempDB
                 CreatedAt = DateTime.Now,
                 DeletedAt = null,
                 ExperiencePoints = 4,
+                TotalStreak = 40,
                 Guid = new Guid(),
                 Level = 8,
                 IsCompleted = false,
-                IsFrozen = true,
+                IsFrozen = false,
                 InProgress = true,
                 UpdatedAt = null,
             };
@@ -74,6 +77,7 @@ namespace HabitBuilder2.TempDB
                 CreatedAt = DateTime.Now,
                 DeletedAt = null,
                 ExperiencePoints = 14,
+                TotalStreak = 44,
                 Guid = new Guid(),
                 Level =5,
                 IsCompleted = false,

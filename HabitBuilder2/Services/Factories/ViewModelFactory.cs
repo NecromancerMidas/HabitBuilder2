@@ -1,4 +1,5 @@
 ﻿using HabitBuilder2.ViewModels.DataModels.Templates;
+using HabitBuilder2.ViewModels.UiModels.MainPage;
 using HabitBuilder2.ViewModels.UiModels.MainPage.Components;
 using HabitBuilder2.ViewModels.ViewModelBase;
 
@@ -18,7 +19,12 @@ public class ViewModelFactory : IViewModelFactory
 
         public T CreateViewModel<T>() where T : BaseViewModel
         {
-            throw new NotImplementedException();
+            if (typeof(T) == typeof(DetailedViewViewModel))
+            {
+                return (T)(object) new DetailedViewViewModel();
+            }
+
+            throw new InvalidOperationException("Viewmodel is wrong or something Factory");
         }
 
         

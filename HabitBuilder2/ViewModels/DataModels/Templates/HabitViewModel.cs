@@ -30,6 +30,7 @@ namespace HabitBuilder2.ViewModels.DataModels.Templates
         private bool _isFrozen;
         private bool _isCompleted;
         public ViewType CurrentView;
+        private int _totalStreak;
         public ObservableCollection<HabitViewModel> Carousel { get; set; }
         private TemplateViewModel _parent { get; set; }
         private HabitStatus _status;
@@ -57,6 +58,7 @@ namespace HabitBuilder2.ViewModels.DataModels.Templates
             _inProgress = habitModel.InProgress;
             _isFrozen = habitModel.IsFrozen;
             _isCompleted = habitModel.IsCompleted;
+            _totalStreak = habitModel.TotalStreak;
             _title = habitModel.Title;
             _description = habitModel.Description;
             _guid = habitModel.Guid;
@@ -91,6 +93,11 @@ namespace HabitBuilder2.ViewModels.DataModels.Templates
             }
         }
 
+        public int TotalStreak
+        {
+            get => _totalStreak;
+            set => SetField(ref _totalStreak, value);
+        }
         public bool InProgress
         {
             get => _inProgress;

@@ -25,11 +25,11 @@
                           IndicatorView="CarouselOneIndicator"
                           HeightRequest="200"
                           x:Name="CarouselOne"
-                          CurrentItemChangedCommand="{Binding ItemChangedCommand}"
+                          CurrentItemChangedCommand="{Binding ChildDetailedViewViewModel.ItemChangedCommand}"
                           CurrentItemChangedCommandParameter="{Binding Source={RelativeSource Self}, Path=CurrentItem}"/>
             <IndicatorView x:Name="CarouselOneIndicator" 
                            HorizontalOptions="Center"></IndicatorView>
-                <views:DetailedView BindingContext="{Binding SelectedTemplate}"/>
+                <views:DetailedView BindingContext="{Binding ChildDetailedViewViewModel}"/>
                
             <HorizontalStackLayout HeightRequest="129"  BackgroundColor="#e9b6b6">
                 <Label WidthRequest="270" Margin="7,0,0,0" VerticalOptions="Center" FontSize="14" Text="“If you are distressed by anything external, 

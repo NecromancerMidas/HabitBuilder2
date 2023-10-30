@@ -5,6 +5,7 @@
              xmlns:components="clr-namespace:HabitBuilder2.Views.MainPage.Components.DetailedViewComponents"
              xmlns:mainPage="using:HabitBuilder2.Selectors.MainPage"
              xmlns:converter="using:HabitBuilder2.Utilities.Converter"
+             xmlns:mainPage1="clr-namespace:HabitBuilder2.ViewModels.UiModels.MainPage"
              x:Class="HabitBuilder2.Views.MainPage.DetailedView">
 
 <ContentView.Resources>
@@ -24,13 +25,13 @@
         <components:DetailedTemplateView IsVisible="True">
             <components:DetailedTemplateView.Triggers>
                 <DataTrigger TargetType="components:DetailedTemplateView"
-                             Binding="{Binding IsHabitSelected}"
+                             Binding="{Binding ShowDetailedTemplateView}"
                              Value="True">
                     <Setter Property="IsVisible" Value="False"></Setter>
                 </DataTrigger>
                 <DataTrigger TargetType="components:DetailedTemplateView"
-                             Binding="{Binding IsHabitSelected}"
-                             Value="False">
+                             Binding="{Binding ShowDetailedTemplateView}"
+                             Value="False" x:DataType="mainPage1:DetailedViewViewModel">
                     <Setter Property="IsVisible" Value="True"></Setter>
                 </DataTrigger>
             </components:DetailedTemplateView.Triggers>
@@ -38,12 +39,12 @@
         <components:SpecificHabitOverview IsVisible="False" BindingContext="{Binding SelectedItem}">
             <components:SpecificHabitOverview.Triggers>
                 <DataTrigger TargetType="components:SpecificHabitOverview"
-                             Binding="{Binding Selected}"
+                             Binding="{Binding ShowSpecificHabitOverview}"
                              Value="True">
                     <Setter Property="IsVisible" Value="True"></Setter>
                 </DataTrigger>
                 <DataTrigger TargetType="components:SpecificHabitOverview"
-                             Binding="{Binding Selected}"
+                             Binding="{Binding ShowSpecificHabitOverview}"
                              Value="False">
                     <Setter Property="IsVisible" Value="False"></Setter>
                 </DataTrigger>

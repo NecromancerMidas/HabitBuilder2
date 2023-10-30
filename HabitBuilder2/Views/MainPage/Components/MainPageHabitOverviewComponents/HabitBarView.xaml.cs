@@ -17,8 +17,7 @@ public partial class HabitBarView : ContentView
     public static readonly BindableProperty HabitLevelProp = BindableProperty.Create(
         nameof(HabitLevel), typeof(int), typeof(HabitBarView), default(int));
     public static readonly BindableProperty HabitStreakProp = BindableProperty.Create(
-        nameof(HabitStreak), typeof(int), typeof(HabitBarView), default(int));
-*/
+        nameof(HabitStreak), typeof(int), typeof(HabitBarView), default(int));*/
 
 
     // private int _habitStreak = 5;

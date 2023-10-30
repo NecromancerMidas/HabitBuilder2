@@ -11,8 +11,8 @@ namespace HabitBuilder2.ViewModels.UiModels.MainPage;
 
 public class HabitOverviewViewModel : BaseViewModel
 {
-    
 
+    public object SelectedItem { get; set; }
 
     public TemplateViewModel Template { get; set; }
     public ObservableCollection<HabitOverviewHabitViewModel> HabitList { get; set; }
