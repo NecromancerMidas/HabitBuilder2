@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using HabitBuilder2.ViewModels.DataModels.Templates;
+using HabitBuilder2.ViewModels.UiModels.MainPage.Components;
 
 namespace HabitBuilder2.Selectors.MainPage
 {
@@ -14,7 +15,7 @@ namespace HabitBuilder2.Selectors.MainPage
 
         protected override DataTemplate OnSelectTemplate(object item, BindableObject container)
         {
-            if (item is TemplateViewModel)
+            if (item is DetailedTemplateViewModel)
             {
                 return DetailedTemplateView;
             }

@@ -1,18 +1,16 @@
-﻿using HabitBuilder2.ViewModels.ViewModelBase;
-using System.Collections.ObjectModel;
-
+﻿using Android.App.AppSearch;
 using HabitBuilder2.ViewModels.DataModels.Templates;
+using HabitBuilder2.ViewModels.ViewModelBase;
 
 namespace HabitBuilder2.ViewModels.UiModels.MainPage.Components;
 
-public class DetailedTemplateOverviewViewModel : BaseViewModel , IDetailedTemplateCarousel
+public class DetailedTemplateGraphsViewModel : BaseViewModel, IDetailedTemplateCarousel
 {
-
     public string Title { get; set; }= "Yo";
-    
+
     private TemplateViewModel _template;
 
-    public DetailedTemplateOverviewViewModel(TemplateViewModel template)
+    public DetailedTemplateGraphsViewModel(TemplateViewModel template)
     {
         Template = template;
     }
@@ -26,6 +24,4 @@ public class DetailedTemplateOverviewViewModel : BaseViewModel , IDetailedTempla
     {
         Template = template;
     }
-
-
 }

@@ -1,5 +1,6 @@
 ﻿using System.Collections.ObjectModel;
 using System.ComponentModel;
+using System.Diagnostics;
 using System.Runtime.CompilerServices;
 using System.Windows.Input;
 using HabitBuilder2.Models;
@@ -26,26 +27,25 @@ namespace HabitBuilder2.ViewModels.UiModels.MainPage
             _viewModelFactory = viewModelFactory;
             Templates =
                 new ObservableCollection<HabitOverviewViewModel>(dataService.GetAll().Select(t => new HabitOverviewViewModel(t, _viewModelFactory)));
-            ItemChangedCommand = new Command<TemplateViewModel>(OnItemChanged);
-            
-            _childDetailedViewViewModel = _viewModelFactory.CreateViewModel<DetailedViewViewModel>();
+            ItemChangedCommand = new Command<HabitOverviewViewModel>(OnItemChanged);
+
+            ChildDetailedViewViewModel = new DetailedViewViewModel(Templates[0].Template);
             _eventAggregator = aggregator;
-            
-            
         }
-
-        private void OnItemChanged(TemplateViewModel newItem)
-        {
-            // Do something with the new item
-            Console.WriteLine($"Selected item: {newItem}");
-            SelectedTemplate = newItem;
-        }
-
         public DetailedViewViewModel ChildDetailedViewViewModel
         {
             get => _childDetailedViewViewModel;
             set => SetField(ref _childDetailedViewViewModel, value);
         }
+        private void OnItemChanged(HabitOverviewViewModel newItem)
+        {if(newItem == null) return;
+            // Do something with the new item
+           Debug.WriteLine($"Selected item: {newItem}");
+           Debug.WriteLine($"Selected item: {newItem.Template}");
+            SelectedTemplate = newItem.Template;
+            ChildDetailedViewViewModel.OnItemChanged(newItem.Template);
+        }
+
         public ObservableCollection<HabitOverviewViewModel> Templates
         {
             get => _templates;

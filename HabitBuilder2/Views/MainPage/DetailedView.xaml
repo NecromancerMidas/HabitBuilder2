@@ -10,7 +10,7 @@
 
 <ContentView.Resources>
     <DataTemplate x:Key="DetailedTemplateView">
-        <components:DetailedTemplateView/>
+        <components:DetailedTemplateView BindingContext="{Binding DetailedTemplateViewModel}"/>
         </DataTemplate>
     <DataTemplate x:Key="SpecificHabitView">
         <components:SpecificHabitOverview/>
@@ -22,7 +22,7 @@
     <converter:IsTypeConverter x:Key="IsTypeConverter" />
 </ContentView.Resources>
     <VerticalStackLayout Spacing="10">
-        <components:DetailedTemplateView IsVisible="True">
+        <components:DetailedTemplateView IsVisible="True" BindingContext="{Binding DetailedTemplateViewModel}">
             <components:DetailedTemplateView.Triggers>
                 <DataTrigger TargetType="components:DetailedTemplateView"
                              Binding="{Binding ShowDetailedTemplateView}"

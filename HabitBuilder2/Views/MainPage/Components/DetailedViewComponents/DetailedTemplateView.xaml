@@ -8,21 +8,25 @@
              x:Class="HabitBuilder2.Views.MainPage.Components.DetailedViewComponents.DetailedTemplateView">
     <ContentView.Resources>
         <ResourceDictionary>
-            <DataTemplate x:Key="DetailedTemplateView">
+            <DataTemplate x:Key="DetailedTemplateOverview">
                 <detailedTemplateViewComponents:TemplateOverview/>
             </DataTemplate>
-            <DataTemplate x:Key="GraphsOrSomething">
-                <!-- Your graphs or something template here -->
+            <DataTemplate x:Key="DetailedTemplateGraphs">
+                <detailedTemplateViewComponents:TemplateOverview/>
             </DataTemplate>
             <carouselOne:CarouselOneTemplateSelector x:Key="CarouselTemplateSelector"
-                                            DetailedTemplateView="{StaticResource DetailedTemplateView}"
-                                            GraphsOrSomething="{StaticResource GraphsOrSomething}" />
+                                            DetailedTemplateOverviewView="{StaticResource DetailedTemplateOverview}"
+                                            GraphsOrSomething="{StaticResource DetailedTemplateGraphs}" />
         </ResourceDictionary>
     </ContentView.Resources>
+    
     <VerticalStackLayout Spacing="10">
+        <Label Text="{Binding Test.Title}"></Label>
+        <Label Text="{Binding String}"></Label>
+        <detailedTemplateViewComponents:TemplateOverview BindingContext="{Binding Test}"/>
         <CarouselView
-            ItemsSource="{Binding CarouselOneTemplate}"
-            ItemTemplate="{StaticResource CarouselTemplateSelector}"
+            ItemsSource="{Binding Carousel}"
+            ItemTemplate="{DataTemplate detailedTemplateViewComponents:TemplateOverview}"
             Margin="0"
             HeightRequest="275"
             BackgroundColor="Green"

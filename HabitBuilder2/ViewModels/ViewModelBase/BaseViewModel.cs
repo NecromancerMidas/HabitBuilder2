@@ -5,6 +5,7 @@ using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
+using HabitBuilder2.ViewModels.DataModels.Templates;
 
 namespace HabitBuilder2.ViewModels.ViewModelBase 
 {
@@ -24,5 +25,7 @@ namespace HabitBuilder2.ViewModels.ViewModelBase
             OnPropertyChanged(propertyName);
             return true;
         }
+
+        
     }
 }

@@ -4,6 +4,7 @@
              xmlns:carouselOne="clr-namespace:HabitBuilder2.Selectors.MainPage.CarouselOne"
              xmlns:views="clr-namespace:HabitBuilder2.Views.MainPage"
              xmlns:detailedViewComponents="using:HabitBuilder2.Views.MainPage.Components.DetailedViewComponents"
+             xmlns:mainPage="using:HabitBuilder2.ViewModels.UiModels.MainPage"
              x:Class="HabitBuilder2.MainPage">
 
     <ContentPage.Resources>
@@ -25,8 +26,9 @@
                           IndicatorView="CarouselOneIndicator"
                           HeightRequest="200"
                           x:Name="CarouselOne"
-                          CurrentItemChangedCommand="{Binding ChildDetailedViewViewModel.ItemChangedCommand}"
-                          CurrentItemChangedCommandParameter="{Binding Source={RelativeSource Self}, Path=CurrentItem}"/>
+                          CurrentItemChangedCommand="{Binding ItemChangedCommand}"
+                          CurrentItemChangedCommandParameter="{Binding Source={RelativeSource Self}, Path=CurrentItem}"
+                          x:DataType="mainPage:MainPageViewModel" />
             <IndicatorView x:Name="CarouselOneIndicator" 
                            HorizontalOptions="Center"></IndicatorView>
                 <views:DetailedView BindingContext="{Binding ChildDetailedViewViewModel}"/>
