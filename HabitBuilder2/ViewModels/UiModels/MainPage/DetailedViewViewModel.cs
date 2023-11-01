@@ -12,7 +12,6 @@ namespace HabitBuilder2.ViewModels.UiModels.MainPage
     public class DetailedViewViewModel : BaseViewModel
     {
         private object _selectedItem;
-        public string gob { get; set; } = "gobgob";
         private View _dynamicContent;
         private bool _showDetailedTemplateView;
         private bool _showSpecificHabitOverview;

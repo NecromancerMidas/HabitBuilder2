@@ -21,9 +21,6 @@
     </ContentView.Resources>
     
     <VerticalStackLayout Spacing="10">
-        <Label Text="{Binding Test.Title}"></Label>
-        <Label Text="{Binding String}"></Label>
-        <detailedTemplateViewComponents:TemplateOverview BindingContext="{Binding Test}"/>
         <CarouselView
             ItemsSource="{Binding Carousel}"
             ItemTemplate="{DataTemplate detailedTemplateViewComponents:TemplateOverview}"

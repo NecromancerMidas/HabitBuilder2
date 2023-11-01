@@ -14,7 +14,7 @@
                 <RowDefinition Height="100"/>
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
-            <Label Text="{Binding Title}" HorizontalOptions="Center" FontSize="20"></Label>
+            <Label HorizontalOptions="Center" FontSize="20"></Label>
             <Label Grid.Row="1" Text="Maybe put the calender here? Or graphs? Who knows? Not you clearly."></Label>
             <Grid Grid.Row="3" BackgroundColor="Red" VerticalOptions="FillAndExpand">
                 <Label  Text="{Binding Description}" HorizontalOptions="Center"></Label>
